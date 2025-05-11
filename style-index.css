@@ -1,0 +1,294 @@
+/* Google Fonts 적용 */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.popup-layout .image-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* 기본 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 50px;
+    background-color: #f4f1ee;
+    color: #333;
+    text-align: center;
+}
+.intro-nav {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .intro-nav ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+  }
+  
+  .intro-nav li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .intro-tab {
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .intro-tab.active {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .intro-section {
+    display: none;
+    text-align: left;
+  }
+  
+  .intro-section.active {
+    display: block;
+  }
+  
+  .text-box {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px 20px;
+  
+  }
+  .intro-section:nth-of-type(1) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .intro-section:nth-of-type(2) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .intro-section:nth-of-type(3) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .intro-section > p:first-of-type {
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+
+/* 제목 가운데 정렬 */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* 본문 컨테이너 (가운데 정렬) */
+.container {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.8;
+    text-align: left;
+}
+a {
+  color: #333;               /* 기본 텍스트 색상 */
+  text-decoration: none;     /* 밑줄 제거 */
+  font-weight: 500;          /* 약간 강조 */
+}
+
+a:hover {
+  color: #666;               /* 마우스 올렸을 때 색 */
+  text-decoration: underline; /* 호버 시 밑줄 */
+}
+
+/* 클릭 가능한 링크 (문장 내 배치) */
+.toggle-link {
+    color: #7d1a1a;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline;
+    word-spacing: 0.1rem;
+    transition: color 0.3s;
+}
+
+.toggle-link:hover {
+    text-decoration: none;
+    color: #a83232;
+}
+
+/* 숨겨진 콘텐츠 */
+.hidden-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, max-height 0.4s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* 콘텐츠가 표시될 때 */
+.hidden-content.show {
+    display: block;
+    opacity: 1;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.image-text-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;         /* 수직 가운데 정렬 */
+  gap: 20px;                   /* 이미지와 텍스트 사이 간격 */
+  margin-bottom: 30px;
+}
+
+.image-text-block img {
+  width: 200px;                /* 원하는 너비 설정 */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.text-description {
+  flex: 1;            /* 너비 제한 */
+}
+
+.text-description h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+}
+
+.text-description p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+/* ========== ✅ 이미지 갤러리 ========== */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;             /* 고정 높이로 통일 */
+  object-fit: contain;         /* 이미지 비율 무시하고 꽉 채움 */
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* 이미지 로드 실패 시 기본 이미지 표시 */
+.hidden-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 10px auto;
+}
+
+.hidden-content img[src="default.jpg"] {
+    opacity: 0.5;
+    filter: grayscale(50%);
+}
+
+/* 프로젝트 선택 드롭다운 */
+/* 📌 드롭다운 메뉴를 좌측 정렬 + 세로 배치로 정돈 */
+.footer {
+    margin-top: 60px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;               /* 더 여백 있게 */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.footer .category {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer label {
+    text-align: left;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+.footer select {
+    font-size: 0.95rem;        /* 약간 줄임 */
+    padding: 6px 12px;         /* 좀 더 단정한 여백 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    min-width: 240px;          /* 적당한 너비로 확장 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); /* 살짝 입체감 */
+    transition: border-color 0.2s;
+}
+
+.footer select:focus {
+    outline: none;
+    border-color: #999;
+}
+
+
+
+#project-select {
+    font-size: 1rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+/* 반응형 (화면 크기에 따라 이미지 갤러리 열 개수 조정) */
+@media (max-width: 1024px) {
+  .image-gallery {
+      grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-gallery {
+      grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+      grid-template-columns: repeat(5, 1fr);
+  }
+}

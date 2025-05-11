@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chungmuro</title>
+  <link rel="stylesheet" href="/style-cont.css">
+  <link rel="stylesheet" href="/style-mobile.css" media="only screen and (max-width: 480px)">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pinyon+Script&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body>
+  <main class="container">
+    <h2>Chungmuro / 2009</h2>
+
+    <!-- ✅ Image Gallery -->
+    <div class="image-gallery">
+      <div class="image-gallery five">
+        <img src="/images/chungmuro/img1.jpg" alt="Project image 1">
+        <img src="/images/chungmuro/img2.jpg" alt="Project image 2">
+        <img src="/images/chungmuro/img3.jpg" alt="Project image 3">
+        <img src="/images/chungmuro/img4.jpg" alt="Project image 4">
+        <img src="/images/chungmuro/img5.jpg" alt="Project image 5">
+        <img src="/images/chungmuro/img6.jpg" alt="Project image 6">
+        <img src="/images/chungmuro/img7.jpg" alt="Project image 7">
+        <img src="/images/chungmuro/img8.jpg" alt="Project image 8">
+        <img src="/images/chungmuro/img9.jpg" alt="Project image 9">
+        <img src="/images/chungmuro/img10.jpg" alt="Project image 10">
+        <img src="/images/chungmuro/img11.jpg" alt="Project image 11">
+        <img src="/images/chungmuro/img12.jpg" alt="Project image 12">
+        <img src="/images/chungmuro/img13.jpg" alt="Project image 13">
+        <img src="/images/chungmuro/img14.jpg" alt="Project image 14">
+        <img src="/images/chungmuro/img15.jpg" alt="Project image 15">
+        <img src="/images/chungmuro/img21.jpg" alt="Project image 21">
+        <img src="/images/chungmuro/img22.jpg" alt="Project image 22">
+        <img src="/images/chungmuro/img23.jpg" alt="Project image 23">
+        <img src="/images/chungmuro/img24.jpg" alt="Project image 24">
+        <img src="/images/chungmuro/img25.jpg" alt="Project image 25">
+      </div>
+      <div class="image-gallery seven">
+        <img src="/images/chungmuro/img17.jpg" alt="Project image 17">
+        <img src="/images/chungmuro/img18.jpg" alt="Project image 18">
+        <img src="/images/chungmuro/img19.jpg" alt="Project image 19">
+        <img src="/images/chungmuro/img20.jpg" alt="Project image 20">
+      </div>
+    </div>
+
+    <p>
+      Chungmuro was formerly known as Jingogae. It was once a key site for transportation and military activities. For a time, I misunderstood the timeline of the name change, assuming it happened after Korea’s liberation. In fact, it was part of Japan’s colonial administrative reform. Ironically, they used Admiral Yi Sun-sin’s posthumous title to glorify Japanese militarism. <br><br>
+      This area was home to many Japanese residents and businesses. After their defeat in World War II, they left their houses behind. These buildings became known as “enemy property.” For a while, they were “ownerless houses,” later transferred from the state to private hands. The process was controversial—many pro-Japanese collaborators used it to accumulate wealth. Legal or not, they maintained economic power through deep-rooted deceit and thick-skinned persistence. <br><br>
+      Over generations, the past faded. The buildings were repaired, renovated, and gradually settled into daily life. Occasionally, when I glimpse a Japanese-style architectural feature or catch sight of an old wooden beam, it no longer feels like a trace of pain but rather a distant relic of Korea’s modernity. <br><br>
+      They never truly left. Their presence remains. On the vibrant streets of Myeong-dong, Bae Yong-joon's smile is certainly not directed at me. It’s oddly familiar, but not entirely welcoming.
+    </p>
+
+    <ul><h4>Reference</h4>
+      <img src="/images/chungmuro/map1.jpg" alt="Location map">
+    </ul>
+
+    <ul><h4>Exhibitions</h4>
+      <li>None</li>
+    </ul>
+
+    <ul><h4>Related Works</h4> 
+      <li><a href="/en/contents/firefly.html" target="_blank">2018 “Firefly”</a></li>
+    </ul>
+
+    <a href="/">🔙 Back</a>
+
+    <div class="footer">
+      <label for="project-select">Select Project:</label>
+      <select id="project-select">
+          <option value="" selected disabled>Select a project</option>
+          <option value="/en/contents/everythingmarket.html">2007 Everything Market</option>
+          <option value="/en/contents/chungmuro.html">2009 Chungmuro</option>
+      </select>
+    </div>
+  </main>
+
+  <script>
+    function loadContent(url) {
+        const container = document.createElement('div');
+        container.className = 'inline-content';
+
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                container.innerHTML = html;
+                document.body.appendChild(container);
+                container.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                container.innerHTML = `<p style="color: red;">❌ Failed to load content.</p>`;
+                console.error('Error loading content:', error);
+            });
+    }
+  </script>
+</body>
+</html>

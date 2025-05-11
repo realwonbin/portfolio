@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트 1</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <h2>충무로 2009</h2>
+    
+    <!-- ✅ 이미지 갤러리 -->
+    <div class="image-gallery">
+        <img src="/images/chungmuro/img1.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img2.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img3.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img4.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img5.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img6.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img7.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img8.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img9.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img10.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img11.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img12.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img13.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img14.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img15.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img21.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img22.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img23.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img24.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img25.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img16.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img17.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img18.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img19.jpg" alt="프로젝트 1 이미지 1">
+        <img src="/images/chungmuro/img20.jpg" alt="프로젝트 1 이미지 1">
+        
+    </div>
+
+    <p></p>
+    <p>
+      충무로의 옛 이름은 진고개이다. 교통과 군사의 요충지였다. 한동안 지명변경의 시기를 잘못 알고 있었다. 당연히 광복 후의 일이라 생각했지만 일제의 행정개편 중 한 부분이었다. 
+      일본의 군국주의를 미화하기 위한 의도로 이순신 장군의 시호를 이용했다. 역설적이다. 이곳은 일본인들의 거주 중심지이자 상권이었다.<br> 
+      패전 후에 그들은 집을 두고 떠났고 이것을 적산가옥이라 부른다. 한 동안 ‘주인 없는 집’이었고 후에 국가로부터 민간으로 양도되었다. 이 과정에서 잡음이 많았다고 한다. 친일파들이 재산증식에 이용했기 때문이다. 불법과 합법을 가리지 않는다. 뿌리 깊은 속임수와 두꺼운 낯짝으로 경제 권력을 유지했고 대물림했다.
+      <br>세대를 지나면서 과거는 희미해지고 건물은 개보수를 거치며 변화했다. 자연스럽게 생활 속에 안착했다. 언뜻 비치는 일본풍의 생경한 건물을 볼 때나 극히 일부만 남은 옛 기둥을 볼 때, 그것은 아픈 과거의 흔적이 아닌 막연한 근대의 정취로 남는다. 
+      <br>그들은 결코 이곳을 떠나지 않았다. 온전하게 공존한다. 명동의 밤거리, 배용준의 미소가 나를 향한 것이 아님은 분명하다. 그래서 친근하지만 않다.
+      
+      <p></p>
+      <ul><h4>참여한 전시</h4> 
+        <li>없음</li>
+      </ul>
+    </p>
+
+    <a href="/">🔙 돌아가기</a>
+     <!-- 클릭 시 아래에 바로 표시되는 콘텐츠 -->
+     <div id="dynamicContent"></div>
+
+     <p>
+       <a href="#" class="inline-link" onclick="loadContent('/contents/everythingmarket.html')">2009 만물시장</a>
+     </p>
+     <div id="inlineContent"></div>
+ 
+   </main>
+   <div class="footer">
+     <label for="project-select">프로젝트 선택:</label>
+     <select id="project-select">
+         <option value="" selected disabled>프로젝트를 선택하세요</option>
+         <option value="/contents/everythingmarket.html">2007 만물시장 </option>
+         <option value="/contents/chungmuro.html">2009 충무로</option>
+     </select>
+   </div>
+ 
+ <script>
+ function loadContent(url) {
+     const container = document.createElement('div');
+     container.className = 'inline-content';
+ 
+     fetch(url)
+         .then(response => response.text())
+         .then(html => {
+             container.innerHTML = html;
+             document.body.appendChild(container);
+             container.scrollIntoView({ behavior: 'smooth' });
+         })
+         .catch(error => {
+             container.innerHTML = `<p style="color: red;">❌ 콘텐츠를 불러오는 데 실패했습니다.</p>`;
+             console.error('Error loading content:', error);
+         });
+ }
+ </script>
+  </main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>호안끼엠</title>
+  <link rel="stylesheet" href="../style-cont.css">
+  <link rel="stylesheet" href="../style-mobile.css" media="only screen and (max-width: 480px)">
+</head>
+<script>
+  if (new URLSearchParams(window.location.search).get('mode') === 'popup') {
+      document.body.classList.add('popup-layout');
+  }
+</script>
+<body>
+  <main class="container">
+    <h2>호안끼엠 / 2018</h2>
+    
+    <!-- ✅ 이미지 갤러리 -->
+    <div class="image-gallery">
+      <div class="image-gallery five">
+          <img src="../images/hoankiem/img1.jpg" alt="프로젝트 1 이미지 1">
+          <img src="../images/hoankiem/img2.jpg" alt="프로젝트 1 이미지 2">
+          <img src="../images/hoankiem/img3.jpg" alt="프로젝트 1 이미지 3">
+          <img src="../images/hoankiem/img4.jpg" alt="프로젝트 1 이미지 4">
+          <img src="../images/hoankiem/img5.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img6.jpg" alt="프로젝트 1 이미지 6">
+          <img src="../images/hoankiem/img7.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img8.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img9.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img10.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img11.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img12.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img13.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img14.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img15.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img16.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img17.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img18.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img19.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img20.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img21.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img22.jpg" alt="프로젝트 1 이미지 5">    
+          <img src="../images/hoankiem/img23.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img24.jpg" alt="프로젝트 1 이미지 5">
+          <img src="../images/hoankiem/img25.jpg" alt="프로젝트 1 이미지 5"></div>
+        
+      </div>   
+    <p></p>
+    <p>
+     
+      <ul><h4>참여한 전시</h4> 
+        <li><a href="https://labelgallery.co.kr/exhibitions/%ec%9d%b4%ec%98%81%ec%9d%b4-%ec%88%98%ec%a7%91%ed%95%9c-%eb%a7%8c%eb%ac%bc%ec%8b%9c%ec%9e%a5%ec%9d%98-%ec%98%9b-%ea%b0%84%ed%8c%90%eb%93%a4/" target="_blank">2020, 《만물시장》, Label gallery, 서울, 개인전</a></li>
+        
+      </ul>
+      <ul><h4>관련 작업</h4> 
+        <li><a href="renminro.html" target="_blank">2009 《인민로》</a></li>
+        
+        <li><a href="pnr0910.html" target="_blank">2009-10 《평화와 통일》</a></li>
+        
+        <li><a href="hoankiem.html" target="_blank">2018 《호안끼엠》</a></li>
+        
+        <li><a href="weissensee.html" target="_blank">2021 《바이센지》/a></li>
+        <li><a href="https://labelgallery.co.kr/exhibitions/%eb%9d%bc%eb%b2%a8%ec%9d%84-%eb%b3%b4%eb%8b%a4/" target="_blank">2021 《라벨을 보다 Lee Young X Label Gallery》</a></li>
+        <li><a href="sarangkot.html" target="_blank">2022 《사랑곳》</a></li>
+        <li><a href="scale.html" target="_blank">2023 《비늘》</a></li>
+        <li><a href="https://labelgallery.co.kr/exhibitions/%eb%9d%bc%eb%b2%a8%ec%9d%84-%eb%b3%b4%eb%8b%a4-2024/" target="_blank">2024 《라벨을 보다 2024》</a></li>
+      <li><a href="https://labelgallery.co.kr/exhibitions/dwelling-for-plants-10/" target="_blank">2025 《포장된 공간》</a></li>
+              
+      </ul>
+    </p>
+
+    <a href="../index.html">🔙 돌아가기</a>
+    <p></p>
+     <!-- 클릭 시 아래에 바로 표시되는 콘텐츠 
+     <div id="dynamicContent"></div>
+
+     <p>
+       <a href="#" class="inline-link" onclick="loadContent('/contents/renminro.html')">2009 인민로</a><br>
+       <a href="#" class="inline-link" onclick="loadContent('/contents/chungmuro.html')">2019 충무로</a>
+     </p>
+     <div id="inlineContent"></div>
+  </main>
+<script>
+   function loadContent(url) {
+       if (window.location.pathname === '/contents/everythingmarket.html') {
+           const container = document.getElementById('inlineContent');
+   
+           fetch(url)
+               .then(response => response.text())
+               .then(html => {
+                   container.innerHTML = html;
+                   container.scrollIntoView({ behavior: 'smooth' });
+               })
+               .catch(error => {
+                   container.innerHTML = `<p style="color: red;">❌ 콘텐츠를 불러오는 데 실패했습니다.</p>`;
+                   console.error('Error loading content:', error);
+               });
+       } else {
+           window.location.href = url;
+       }
+   }
+</script>  -->
+</body>
+</html>
