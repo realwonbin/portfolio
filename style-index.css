@@ -16,29 +16,41 @@ body {
     text-align: center;
 }
 .intro-nav {
+    display: flex;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    line-height: 1.8;
     text-align: center;
-    margin-bottom: 30px;
   }
-  
-  .intro-nav ul {
-    list-style: none;
-    padding: 0;
-    display: inline-block;
-  }
-  
-  .intro-nav li {
-    display: inline;
-    margin: 0 10px;
-  }
-  
+
+.intro-nav ul {
+  display: flex;            /* 플렉스 컨테이너로 전환 */
+  flex-wrap: wrap;          /* 줄 바꿈 허용 */
+  justify-content: center;  /* 중앙 정렬 */
+  gap: 12px;                /* 아이템 간격을 일정하게 */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  row-gap: 8px; 
+}
+  /* li 쪽 마진은 제거하고, 탭 자체에 패딩 조정 */
+.intro-nav li {
+  margin: 0;
+}
+.intro-nav li:last-child {
+  margin-left: auto;
+}
   .intro-tab {
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 5px 5px;
     font-weight: 500;
     border-radius: 5px;
     border: 1px solid #aaa;
     background-color: #fff;
     color: #333;
+    white-space: nowrap;
   }
   
   .intro-tab.active {
@@ -295,4 +307,29 @@ a:hover {
   .image-gallery {
       grid-template-columns: repeat(5, 1fr);
   }
+}
+.external-menu {
+  max-width: 800px;       /* 본문 컨테이너와 동일한 폭 */
+  margin: 2rem auto 1rem; /* 위아래 여백 */
+  padding: 0.5 0px;
+}
+
+.external-menu .menu-link {
+  display: block;             
+  width: 100%;                
+  padding: 0.5rem 0;            
+  background-color: #fff;     
+  border: 1px solid #ccc;     
+  border-radius: 6px;         
+  text-align: center;         
+  font-size: 1rem;          
+  font-weight: 500;           
+  color: #333;                
+  text-decoration: none;      
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.external-menu .menu-link:hover {
+  background-color: #f0f0f0;  
+  border-color: #aaa;
 }

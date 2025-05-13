@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   document.querySelectorAll('.intro-tab').forEach(tab => {
         tab.addEventListener('click', (e) => {
+          const href = tab.getAttribute('href');
+    if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+      return;
+    }  
           e.preventDefault();
       
           // 모든 탭과 섹션 비활성화
