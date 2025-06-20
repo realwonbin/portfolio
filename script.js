@@ -95,3 +95,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.add('popup-layout');
     }
 });
+
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://www.younglee.co.kr/조화.html', {waitUntil: 'networkidle0'});
+
+  await page.pdf({
+    path: '조화.pdf',
+    format: 'A4',
+    printBackground: true,
+    margin: {
+      top: '0mm',
+      bottom: '0mm',
+      left: '0mm',
+      right: '0mm'
+    }
+  });
+
+  await browser.close();
+})();
