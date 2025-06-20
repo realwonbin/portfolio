@@ -95,25 +95,46 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.add('popup-layout');
     }
 });
+const pages = [
+  { name: '조화', url: 'https://www.younglee.co.kr/contents/af.html' },
+  { name: '문을 두드리다', url: 'https://www.younglee.co.kr/contents/kod.html' },
+  { name: '보이지 않는 당신', url: 'https://www.younglee.co.kr/contents/oosy.html' },
+  { name: '대추와 꿀벌', url: 'https://www.younglee.co.kr/contents/haj.html' },
+  { name: '캄보디아에서 온 37세의 분반나씨', url: 'https://www.younglee.co.kr/contents/cambo.html' }
+];
 
 const puppeteer = require('puppeteer');
 
 (async () => {
   const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('https://www.younglee.co.kr/조화.html', {waitUntil: 'networkidle0'});
 
-  await page.pdf({
-    path: '조화.pdf',
-    format: 'A4',
-    printBackground: true,
-    margin: {
-      top: '0mm',
-      bottom: '0mm',
-      left: '0mm',
-      right: '0mm'
-    }
-  });
+  const pages = [
+    { name: '조화', url: 'https://www.younglee.co.kr/contents/af.html' },
+    { name: '문을 두드리다', url: 'https://www.younglee.co.kr/contents/kod.html' },
+    { name: '보이지 않는 당신', url: 'https://www.younglee.co.kr/contents/oosy.html' },
+    { name: '대추와 꿀벌', url: 'https://www.younglee.co.kr/contents/haj.html' },
+    { name: '캄보디아에서 온 37세의 분반나씨', url: 'https://www.younglee.co.kr/contents/cambo.html' }
+  ];
+
+  for (const pageInfo of pages) {
+    const page = await browser.newPage();
+    await page.goto(pageInfo.url, {waitUntil: 'networkidle0'});
+
+    await page.pdf({
+      path: `${pageInfo.name}.pdf`,
+      format: 'A4',
+      printBackground: true,
+      margin: {
+        top: '0mm',
+        bottom: '0mm',
+        left: '0mm',
+        right: '0mm'
+      }
+    });
+
+    await page.close();
+    console.log(`${pageInfo.name}.pdf 생성 완료`);
+  }
 
   await browser.close();
 })();
