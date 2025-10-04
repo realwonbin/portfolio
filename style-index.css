@@ -343,3 +343,19 @@ a:hover {
   background-color: #f0f0f0;  
   border-color: #aaa;
 }
+
+.intro-nav .intro-tab{
+  position: relative;
+  background: transparent;
+  border: 0;
+}
+.intro-nav .intro-tab::after{
+  content:"";
+  position:absolute;
+  left:50%; bottom:-6px;
+  width:0; height:2px;
+  background:#111;
+  transition: width .2s ease, left .2s ease;
+}
+.intro-nav .intro-tab:hover::after{ width:60%; left:20%; }
+.intro-nav .intro-tab.active::after{ width:100%; left:0; }
