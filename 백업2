@@ -6,63 +6,39 @@
   margin: 0 auto;
 }
 
+
 /* 기본 스타일 */
 body {
-    font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR",
-               "Malgun Gothic", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     padding: 50px;
-    background-color: #f7f6f4;
-    color: #222;
+    background-color: #f4f1ee;
+    color: #333;
     text-align: center;
-    word-break: keep-all;
 }
-
-.container, .intro-section {
-  max-width: 72ch;           /* 세로 읽기 최적 폭(문학/에세이 톤) */
-  margin-inline: auto;
-}
-
-h2, h3 { 
-  text-wrap: balance;        /* 제목 줄바꿈의 시각적 균형 */
-  line-height: 1.25;
-}
-
 .intro-nav {
-    display: flex;
-    max-width: 720px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0px;
-    line-height: 1.8;
     text-align: center;
+    margin-bottom: 30px;
   }
-
-.intro-nav ul {
-  display: flex;            /* 플렉스 컨테이너로 전환 */
-  flex-wrap: wrap;          /* 줄 바꿈 허용 */
-  justify-content: center;  /* 중앙 정렬 */
-  gap: 12px;                /* 아이템 간격을 일정하게 */
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  row-gap: 8px; 
-}
-  /* li 쪽 마진은 제거하고, 탭 자체에 패딩 조정 */
-.intro-nav li {
-  margin: 0;
-}
-.intro-nav li:last-child {
-  margin-left: auto;
-}
+  
+  .intro-nav ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+  }
+  
+  .intro-nav li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
   .intro-tab {
     text-decoration: none;
-    padding: 5px 5px;
+    padding: 8px 16px;
     font-weight: 500;
     border-radius: 5px;
     border: 1px solid #aaa;
     background-color: #fff;
     color: #333;
-    white-space: nowrap;
   }
   
   .intro-tab.active {
@@ -79,37 +55,14 @@ h2, h3 {
     display: block;
   }
   
+
   .text-box {
     border: 1px solid #ccc;
     background-color: #fff;
     padding: 10px 20px;
   
   }
-  .intro-section:nth-of-type(1) {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .intro-section:nth-of-type(2) {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .intro-section:nth-of-type(3) {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .intro-section:nth-of-type(4) {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .intro-section > p:first-of-type {
-    margin-bottom: 3rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ccc;
-  }
+  
   
 
 /* 제목 가운데 정렬 */
@@ -127,16 +80,6 @@ h2 {
     padding: 20px;
     line-height: 1.8;
     text-align: left;
-}
-a {
-  color: #333;               /* 기본 텍스트 색상 */
-  text-decoration: none;     /* 밑줄 제거 */
-  font-weight: 500;          /* 약간 강조 */
-}
-
-a:hover {
-  color: #666;               /* 마우스 올렸을 때 색 */
-  text-decoration: underline; /* 호버 시 밑줄 */
 }
 
 /* 클릭 가능한 링크 (문장 내 배치) */
@@ -178,37 +121,6 @@ a:hover {
     padding: 10px;
 }
 
-.image-text-block {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;         /* 수직 가운데 정렬 */
-  gap: 20px;                   /* 이미지와 텍스트 사이 간격 */
-  margin-bottom: 30px;
-}
-
-.image-text-block img {
-  width: 200px;                /* 원하는 너비 설정 */
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.text-description {
-  flex: 1;            /* 너비 제한 */
-}
-
-.text-description h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.2rem;
-}
-
-.text-description p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-
 /* ========== ✅ 이미지 갤러리 ========== */
 .image-gallery {
   display: grid;
@@ -221,8 +133,8 @@ a:hover {
 
 .image-gallery img {
   width: 100%;
-  height: auto;             /* 고정 높이로 통일 */
-  object-fit: contain;         /* 이미지 비율 무시하고 꽉 채움 */
+  height: 150px;             /* 고정 높이로 통일 */
+  object-fit: cover;         /* 이미지 비율 무시하고 꽉 채움 */
   border-radius: 5px;
   transition: transform 0.3s;
 }
@@ -265,7 +177,6 @@ a:hover {
 }
 
 .footer label {
-    text-align: left;
     font-style: italic;
     font-weight: 400;
     font-size: 0.95rem;
@@ -320,28 +231,16 @@ a:hover {
       grid-template-columns: repeat(5, 1fr);
   }
 }
-.external-menu {
-  max-width: 800px;       /* 본문 컨테이너와 동일한 폭 */
-  margin: 2rem auto 1rem; /* 위아래 여백 */
-  padding: 0.5 0px;
+.footer {
+margin-top: 50px;
+text-align: center;
 }
 
-.external-menu .menu-link {
-  display: block;             
-  width: 100%;                
-  padding: 0.5rem 0;            
-  background-color: #fff;     
-  border: 1px solid #ccc;     
-  border-radius: 6px;         
-  text-align: center;         
-  font-size: 1rem;          
-  font-weight: 500;           
-  color: #333;                
-  text-decoration: none;      
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.external-menu .menu-link:hover {
-  background-color: #f0f0f0;  
-  border-color: #aaa;
+#project-select {
+font-size: 1rem;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 5px;
+cursor: pointer;
+background-color: white;
 }
