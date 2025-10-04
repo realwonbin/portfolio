@@ -161,3 +161,12 @@ p{ margin:0 0 1rem; }
   .select-field{ grid-template-columns: 1fr; row-gap: 6px; }
   .selector-row{ margin-top: 40px; }
 }
+
+/* 기본: 브레이크 숨김 → 한 줄 */
+.br-desktop{ display:none; }
+/* 넓은 화면에서만 강제 줄바꿈 */
+@media (min-width: 900px){
+  .br-desktop{ display: inline; }
+}
+/* 한국어 제목 줄바꿈/가독성 보정(권장) */
+.title{ word-break: keep-all; line-break: loose; text-wrap: balance; }
