@@ -132,3 +132,34 @@ h2 { margin-top: 8px; }
     margin-bottom: var(--gap);
   }
 }
+
+/* === HOTFIX: 레이아웃/리스트 정리 === */
+
+/* 전체 텍스트는 기본 좌측 정렬로 돌려놓기 */
+body { text-align: left !important; margin: 0; }
+
+/* 모든 목록 불릿 제거 + 들여쓰기 제거 */
+ul, ol { list-style: none !important; padding-left: 0 !important; margin-left: 0 !important; }
+
+/* 상단 탭(현재 마크업: <nav class="intro-nav"><ul>...)을 정상 탭처럼 보이게 */
+.intro-nav ul {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px; padding: 0; margin: 0;
+}
+.intro-nav li { margin: 0; }
+.intro-tab {
+  display: inline-block; padding: 8px 10px;
+  border: 1px solid #aaa; border-radius: 6px;
+  text-decoration: none; color: #333; background: #fff; white-space: nowrap;
+}
+.intro-tab.active { background: #333; color: #fff; }
+
+/* 본문 폭·행간(읽기 최적화) */
+.container { max-width: 72ch; width: 100%; margin: 0 auto; line-height: 1.9; }
+
+/* 섹션 표시/숨김(현재 구조 유지) + 앵커 점프 보정 */
+.intro-section { display: none; scroll-margin-top: 80px; }
+.intro-section.active, .intro-section:target { display: block; }
+
+/* 이미지 기본 규율 */
+img { max-width: 100%; height: auto; display: block; }
