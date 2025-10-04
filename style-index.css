@@ -82,27 +82,25 @@ p{ margin:0 0 1rem; }
 .selector-row{
   display: grid;
   gap: 14px;
-  grid-template-columns: 1fr;      /* 한 줄에 항목 하나씩 */
-  max-width: var(--container-wide); /* 선택: 셀렉트 줄만 좀 더 넓게 */
-  margin: 24px auto 8px;
+  grid-template-columns: 1fr;             /* 항목 1개씩 세로 */
+  max-width: var(--container-wide);       /* 필요하면 1024px로 ↑ */
+  margin: 32px auto 8px;
   padding: 0 24px;
 }
 
 .select-field{ 
   display: grid;
-  grid-template-columns: clamp(120px, 18%, 220px) 1fr;
+  grid-template-columns: clamp(120px, 16%, 220px) 1fr;  /* 라벨 좁게, 셀렉트 넓게 */
   align-items: center;
-  column-gap: 16px; 
+  column-gap: 16px;
 }
 
 /* 보이는 소제목(라벨) */
 .select-label{
-  margin: 0;                /* 좌우 여백 때문에 셀렉트 폭이 줄지 않게 */
-  font-size: .9rem;
+  margin: 0;
   font-weight: 700;
-  color: var(--muted);
-  line-height: 1.2;
-  text-align: left;
+  font-size: .9rem;
+  color: #6c7378;
 }
 
 
@@ -112,46 +110,36 @@ p{ margin:0 0 1rem; }
   padding: 12px 14px;
   border: 1px solid var(--rule);
   border-radius: 12px;
-  background: #fff;
+  background: #fff;        /* 흰 배경으로 고정 */
   color: var(--text);
   line-height: 1.35;
-  -webkit-appearance: none;
   appearance: none;
 }
 
-/* ========= Footer links ========= */
-/* 하단 카테고리: 라벨 좁게 / 셀렉트 넓게 */
-.footer{
-  display: grid;
-  grid-template-columns: clamp(120px, 18%, 220px) 1fr;
-  gap: 12px 16px;
-  max-width: 960px;         /* 필요하면 720~1024px에서 조절 */
-  margin: 24px auto 40px;
+/* ========== 푸터 외부 링크 ========== */
+.external-menu{
+  max-width: var(--container);
+  margin: 28px auto 48px;
   padding: 0 24px;
   text-align: left;
 }
-
-.footer label{
-  margin: 0;
-  font-weight: 700;
-  font-size: .9rem;
-  color: #6c7378;
+.external-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-
-.footer select{
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #e5e1da;
-  border-radius: 12px;
+.external-menu a,
+.external-menu .menu-link{               /* 클래스가 빠져도 적용되도록 a에도 적용 */
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  text-decoration: none;
+  color: var(--text);
   background: #fff;
-  color: #2b2b2b;
-  line-height: 1.35;
-  appearance: none;
 }
+.external-menu a:hover{ border-color: var(--ink); }
 
 @media (max-width: 640px){
-  .footer{
-    grid-template-columns: 1fr;   /* 모바일은 세로 스택 */
-    row-gap: 6px;
-  }
+  .select-field{ grid-template-columns: 1fr; row-gap: 6px; }
 }
