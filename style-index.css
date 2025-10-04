@@ -110,10 +110,6 @@ p{ margin:0 0 1rem; }
   appearance: none;
 }
 
-/* 긴 옵션 텍스트 툴팁(마우스오버 시 전체 보기) */
-.selector-row option[title]{ }
-.selector-row option[title]:hover{ }
-
 /* ========= Footer links ========= */
 .external-menu{ max-width:var(--container); margin:24px auto; padding:0 24px; text-align:left; }
 .menu-link{
