@@ -6,15 +6,34 @@
   margin: 0 auto;
 }
 
+html {
+  font-size: clamp(15px, 1.3vw, 18px);
+}
 
 /* 기본 스타일 */
 body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR",
+               "Malgun Gothic", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     padding: 50px;
-    background-color: #f4f1ee;
-    color: #333;
+    background-color: #f7f6f4;
+    color: #222;
     text-align: center;
+    word-break: keep-all;
+    text-underline-offset: 2px;
+    padding-inline: clamp(16px, 4vw, 24px);
+    padding-block: clamp(24px, 5vw, 48px);
 }
+
+.container, .intro-section {
+  max-width: 72ch;           /* 세로 읽기 최적 폭(문학/에세이 톤) */
+  margin-inline: auto;
+}
+
+h2, h3 { 
+  text-wrap: balance;        /* 제목 줄바꿈의 시각적 균형 */
+  line-height: 1.25;
+}
+
 .intro-nav {
     display: flex;
     max-width: 720px;

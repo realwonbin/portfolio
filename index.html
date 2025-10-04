@@ -16,13 +16,21 @@
 </script>
   <link rel="stylesheet" href="style-index.css">
   <link rel="stylesheet" href="style-mobile.css" media="only screen and (max-width: 480px)">
-  <script>
+  <script defer>
     const lang = navigator.language || navigator.userLanguage;
     
     // 한국어가 아닌 경우
     if (!lang.startsWith('ko')) {
       window.location.href = "/en/index.html";  // 영어 페이지 경로
     }
+  </script>
+  <script defer>
+    // popup 모드
+    document.addEventListener('DOMContentLoaded', () => {
+      if (new URLSearchParams(location.search).get('mode') === 'popup') {
+        document.body.classList.add('popup-layout');
+      }
+    });
   </script>
 </head>
 
@@ -31,16 +39,18 @@
       document.body.classList.add('popup-layout');
   }
 </script>
-<nav class="intro-nav">
-  <ul>
-    <li><a href="#" data-intro="intro0" class="intro-tab active">시작/기점/요약</a></li>
-    <li><a href="#" data-intro="intro1" class="intro-tab">엉킨 실타래,달항아리</a></li>
-    <li><a href="#" data-intro="intro2" class="intro-tab">이 글은 작업을 설명하지 않습니다</a></li>
-    <li><a href="#" data-intro="intro3" class="intro-tab">가까운 것들은 가장 멀리 있다</a></li>
-    
-  </ul>
-</nav>
 <body>
+  <header>
+    <nav class="intro-nav">
+      <ul>
+        <li><a href="#" data-intro="intro0" class="intro-tab active">시작/기점/요약</a></li>
+        <li><a href="#" data-intro="intro1" class="intro-tab">엉킨 실타래,달항아리</a></li>
+        <li><a href="#" data-intro="intro2" class="intro-tab">이 글은 작업을 설명하지 않습니다</a></li>
+        <li><a href="#" data-intro="intro3" class="intro-tab">가까운 것들은 가장 멀리 있다</a></li>
+        
+      </ul>
+    </nav>
+</header>
   <main class="container">
     <section id="intro0" class="intro-section active">
           <h2>이영</h2>
