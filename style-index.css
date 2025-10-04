@@ -6,10 +6,6 @@
   margin: 0 auto;
 }
 
-html {
-  font-size: clamp(15px, 1.3vw, 18px);
-}
-
 /* 기본 스타일 */
 body {
     font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR",
@@ -19,9 +15,6 @@ body {
     color: #222;
     text-align: center;
     word-break: keep-all;
-    text-underline-offset: 2px;
-    padding-inline: clamp(16px, 4vw, 24px);
-    padding-block: clamp(24px, 5vw, 48px);
 }
 
 .container, .intro-section {
