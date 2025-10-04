@@ -120,22 +120,38 @@ p{ margin:0 0 1rem; }
 }
 
 /* ========= Footer links ========= */
-.external-menu{ max-width:var(--container); margin:24px auto; padding:0 24px; text-align:left; }
-.menu-link{
-  display:inline-block; padding:6px 12px; margin:6px 8px 0 0;
-  border:1px solid var(--rule); border-radius:9999px;
-  text-decoration:none; color:var(--text);
+/* 하단 카테고리: 라벨 좁게 / 셀렉트 넓게 */
+.footer{
+  display: grid;
+  grid-template-columns: clamp(120px, 18%, 220px) 1fr;
+  gap: 12px 16px;
+  max-width: 960px;         /* 필요하면 720~1024px에서 조절 */
+  margin: 24px auto 40px;
+  padding: 0 24px;
+  text-align: left;
 }
-.menu-link:hover{ border-color:var(--ink); }
 
-/* ========= Popup layout(옵션) ========= */
-.popup-layout .image-gallery{ max-width:1200px; margin:0 auto; }
+.footer label{
+  margin: 0;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #6c7378;
+}
 
-/* ========= Responsive ========= */
+.footer select{
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e1da;
+  border-radius: 12px;
+  background: #fff;
+  color: #2b2b2b;
+  line-height: 1.35;
+  appearance: none;
+}
+
 @media (max-width: 640px){
-  .select-field{
-    grid-template-columns: 1fr;
+  .footer{
+    grid-template-columns: 1fr;   /* 모바일은 세로 스택 */
     row-gap: 6px;
   }
-  .select-label{ margin-left: 2px; }
 }
