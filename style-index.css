@@ -359,3 +359,12 @@ a:hover {
 }
 .intro-nav .intro-tab:hover::after{ width:60%; left:20%; }
 .intro-nav .intro-tab.active::after{ width:100%; left:0; }
+
+:root{
+  --ink:#1c2a39;   /* 밑줄/포커스 잉크 */
+  --text:#2b2b2b;
+  --muted:#6c7378;
+}
+.intro-nav .intro-tab{ color:var(--text); }
+.intro-nav .intro-tab.active{ color:var(--ink); }
+.intro-nav .intro-tab::after{ background:var(--ink); }
