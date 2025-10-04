@@ -163,3 +163,26 @@ ul, ol { list-style: none !important; padding-left: 0 !important; margin-left: 0
 
 /* 이미지 기본 규율 */
 img { max-width: 100%; height: auto; display: block; }
+
+/* === FIX: 레이아웃 강제 정렬 & 폭 안정화 === */
+
+/* 2열 그리드: 왼쪽 고정폭, 오른쪽은 남는 공간 모두 */
+.layout { grid-template-columns: 280px minmax(0, 1fr) !important; }
+
+/* 우측 본문: 가운데로 몰리지 않게 좌 정렬 */
+.prose { max-width: 72ch; margin: 0 0 0 0 !important; }
+
+/* 사이드바 폭/스크롤 여유 */
+.sidebar { width: 280px; }
+
+/* 현재 위치 하이라이트(선택) */
+.side-list a.active { background: #efefef; font-weight: 600; border-radius: 8px; }
+
+/* 이미지+텍스트 카드: 기본 1열, 큰 화면만 2열 */
+.image-text-block { grid-template-columns: 1fr !important; }
+@media (min-width: 1024px){
+  .image-text-block { grid-template-columns: 1.2fr .8fr !important; }
+}
+
+/* 리스트 불릿 정리(왼쪽에 점만 보이는 증상 방지) */
+ul, ol { list-style: none; padding-left: 0; margin-left: 0; }
