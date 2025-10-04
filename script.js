@@ -1,6 +1,9 @@
 // script.js — 탭 전환 + 카테고리 이동 + 안전한 popup 레이아웃 + (옵션) PJAX
 document.addEventListener('DOMContentLoaded', () => {
   // 1) ?mode=popup → 안전하게 body 클래스 적용
+  // 맨 위나 DOMContentLoaded 안 적당한 곳에 추가
+  const ENABLE_PJAX = false;
+
   if (new URLSearchParams(location.search).get('mode') === 'popup') {
     document.body.classList.add('popup-layout');
   }
