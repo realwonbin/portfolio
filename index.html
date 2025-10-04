@@ -8,24 +8,24 @@
   <script>
 (function () {
   const qs = new URLSearchParams(location.search);
-  const forced = qs.get('lang'); // 'ko' or 'en'
+  const forced = qs.get('lang');
   if (forced) localStorage.setItem('prefLang', forced);
 
-  const pref = localStorage.getItem('prefLang'); // 'ko' | 'en' | null
+  const pref = localStorage.getItem('prefLang');
   const isKo = (navigator.language || '').toLowerCase().startsWith('ko');
 
-  // 사용자가 EN을 선호하면 항상 /en/으로 보냄
   if (pref === 'en' && !location.pathname.startsWith('/en/')) {
     location.replace('/en/');
     return;
   }
 
-  // 선호가 없고, 브라우저가 한국어가 아니면 첫 방문에만 EN으로 유도
   if (!pref && !isKo && !location.pathname.startsWith('/en/')) {
     location.replace('/en/');
   }
 })();
 </script>
+
+
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4MVZW5WJMF"></script>

@@ -8,24 +8,26 @@
 <script>
 (function () {
   const qs = new URLSearchParams(location.search);
-  const forced = qs.get('lang'); // 'ko' or 'en'
+  const forced = qs.get('lang');           // 'ko' | 'en' | null
   if (forced) localStorage.setItem('prefLang', forced);
 
-  const pref = localStorage.getItem('prefLang');
+  const pref = localStorage.getItem('prefLang');     // 'ko' | 'en' | null
   const isKo = (navigator.language || '').toLowerCase().startsWith('ko');
 
-  // 사용자가 KO를 선호하면 항상 루트로 보냄
-  if (pref === 'ko' && location.pathname.startsWith('/en/')) {
+  // 사용자가 'ko'를 명시 선택한 경우에만 루트로 보냄
+  if (pref === 'ko') {
     location.replace('/');
     return;
   }
 
-  // 선호가 없고 브라우저가 한국어이며, 쿼리로 강제 안 했을 때만 루트로 유도
-  if (!pref && isKo && !qs.has('lang')) {
+  // 선호가 전혀 없고(첫 방문) + 한국어 브라우저일 때만 루트로 유도
+  // 단, lang 파라미터로 'en'을 강제한 경우는 제외
+  if (!pref && isKo && forced !== 'en') {
     location.replace('/');
   }
 })();
 </script>
+
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4MVZW5WJMF"></script>
