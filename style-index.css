@@ -80,32 +80,41 @@ p{ margin:0 0 1rem; }
 /* ========= Category select row ========= */
 /* 라벨+셀렉트 레이아웃 */
 .selector-row{
-  display:grid; gap:12px;
-  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-  max-width: var(--container); margin: 24px auto 8px; padding: 0 24px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;      /* 한 줄에 항목 하나씩 */
+  max-width: var(--container-wide); /* 선택: 셀렉트 줄만 좀 더 넓게 */
+  margin: 24px auto 8px;
+  padding: 0 24px;
 }
 
-.select-field{ display:flex; flex-direction:column; }
+.select-field{ 
+  display: grid;
+  grid-template-columns: clamp(120px, 18%, 220px) 1fr;
+  align-items: center;
+  column-gap: 16px; 
+}
 
 /* 보이는 소제목(라벨) */
 .select-label{
-  margin: 0 0 6px 10px;
-  font-size: .875rem;            /* 소제목 크기 */
-  font-weight: 700;              /* 약간 굵게 */
-  color: var(--muted);           /* 너무 진하지 않게 */
-  letter-spacing: .02em;
+  margin: 0;                /* 좌우 여백 때문에 셀렉트 폭이 줄지 않게 */
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--muted);
   line-height: 1.2;
+  text-align: left;
 }
+
 
 /* 셀렉트 자체 */
 .selector-row select{
-  width:100%;
+  width: 100%;
   padding: 12px 14px;
   border: 1px solid var(--rule);
   border-radius: 12px;
   background: #fff;
   color: var(--text);
-  line-height:1.3;
+  line-height: 1.35;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -124,6 +133,9 @@ p{ margin:0 0 1rem; }
 
 /* ========= Responsive ========= */
 @media (max-width: 640px){
-  .container{ padding:16px; }
-  .image-text-block img{ width:160px; }
+  .select-field{
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+  .select-label{ margin-left: 2px; }
 }
