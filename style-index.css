@@ -66,7 +66,12 @@ p{ margin:0 0 1rem; }
   width:200px; height:auto; display:block; border-radius:var(--radius);
 }
 .text-description{ flex:1; min-width:260px; text-align:left; }
-.text-description h3{ margin:0 0 8px; font-size:1.125rem; }
+.text-description h3{
+  word-break: keep-all;     /* 글자 단위가 아니라 어절 단위로 */
+  line-break: loose;        /* 문장부호 주변 줄바꿈 개선 */
+  text-wrap: balance;       /* 2줄 길이 균형 (크롬/엣지/사파리 최신) */
+  letter-spacing: -0.005em; /* 미세 커닝 */
+}
 .text-description p{ margin:0 0 12px; }
 
 /* ========= Gallery ========= */
@@ -86,6 +91,9 @@ p{ margin:0 0 1rem; }
   max-width: var(--container-wide);       /* 필요하면 1024px로 ↑ */
   margin: 32px auto 8px;
   padding: 0 24px;
+  position: relative;
+  margin-top: 56px;        /* 본문과 거리 */
+  padding-top: 12px;
 }
 
 .select-field{ 
@@ -102,7 +110,15 @@ p{ margin:0 0 1rem; }
   font-size: .9rem;
   color: #6c7378;
 }
-
+.selector-row::before{
+  content:"";
+  display:block;
+  height:1px;
+  width:100%;
+  background: linear-gradient(90deg, transparent 0, var(--rule) 14%, var(--rule) 86%, transparent 100%);
+  margin: 0 0 18px;
+  border-radius: 1px;
+}
 
 /* 셀렉트 자체 */
 .selector-row select{
@@ -111,6 +127,7 @@ p{ margin:0 0 1rem; }
   border: 1px solid var(--rule);
   border-radius: 12px;
   background: #fff;        /* 흰 배경으로 고정 */
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
   color: var(--text);
   line-height: 1.35;
   appearance: none;
@@ -142,4 +159,5 @@ p{ margin:0 0 1rem; }
 
 @media (max-width: 640px){
   .select-field{ grid-template-columns: 1fr; row-gap: 6px; }
+  .selector-row{ margin-top: 40px; }
 }
