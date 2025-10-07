@@ -1,38 +1,39 @@
-// clocktower-map-lazy.js — 시계탑 페이지 전용, 클릭 시 Naver Maps SDK 로드
+// clocktower-map-lazy.js — 시계탑 전용. 뷰포트 근접 시 SDK/데이터를 로드해 지도 초기화
 
-// 시범 좌표(원하면 바로 교체)
-const PLACES = [
-  { id:"wonju-musil-park", title:"원주 무실 체육공원 시계탑", lat:37.34123, lng:127.92345, note:"야간 조명 약함" },
-  { id:"yanggu-rotary",    title:"양구 로터리 시계",           lat:38.10651, lng:127.98992, note:"교차로 중앙" },
-];
-
-// ✅ 새 정책: ncpKeyId 사용
-const NCP_KEY_ID = "5yei7ae3lp";  // 예: abcd1234efgh5678
+const NCP_KEY_ID = "5yei7ae3lp";  // 콘솔의 Client ID 값 그대로
 
 let map, info, markers = [], mapLoaded = false;
 
-// 인증 실패 콜백(문구 표시)
 window.navermap_authFailure = function () {
-  const btn = document.getElementById("openMap");
-  if (btn) btn.textContent = "인증 실패 — 콘솔의 도메인/키를 확인하세요";
-  console.warn("Naver Maps auth failed. Check ncpKeyId & Web URL origins.");
+  console.warn("Naver Maps auth failed. ncpKeyId / Web URL origins 확인");
 };
 
-function loadNaverSdkOnce() {
-  return new Promise((res, rej) => {
-    if (window.naver && window.naver.maps) return res();
+function loadScript(src){
+  return new Promise((res, rej)=>{
     const s = document.createElement("script");
-    s.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NCP_KEY_ID}`;
-    s.onload = () => res();
-    s.onerror = () => rej(new Error("Naver Maps SDK load failed"));
+    s.src = src; s.onload = res; s.onerror = ()=>rej(new Error("script load fail: "+src));
     document.head.appendChild(s);
   });
 }
 
-function initMap() {
-  const mapDiv = document.getElementById("map");
-  mapDiv.style.display = "block";
+async function ensureSdk(){ if(!(window.naver && window.naver.maps)){
+  await loadScript(`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NCP_KEY_ID}`);
+}}
 
+async function fetchPlaces(){
+  const r = await fetch("../data/clock-places.json", {cache:"no-cache"});
+  if(!r.ok) throw new Error("places json load failed");
+  return r.json();
+}
+
+async function initMap(){
+  if(mapLoaded) return;
+  mapLoaded = true;
+
+  await ensureSdk();
+  const PLACES = await fetchPlaces();
+
+  const mapDiv = document.getElementById("map");
   const center = PLACES.length
     ? new naver.maps.LatLng(PLACES[0].lat, PLACES[0].lng)
     : new naver.maps.LatLng(37.5665, 126.9780); // 서울
@@ -47,12 +48,12 @@ function initMap() {
   });
 
   const bounds = new naver.maps.LatLngBounds();
-  PLACES.forEach(p => {
+  PLACES.forEach(p=>{
     const pos = new naver.maps.LatLng(p.lat, p.lng);
     bounds.extend(pos);
     const mk = new naver.maps.Marker({ position: pos, map, title: p.title });
     mk.__meta = p;
-    naver.maps.Event.addListener(mk, "click", () => {
+    naver.maps.Event.addListener(mk, "click", ()=>{
       const html = `
         <div style="min-width:200px">
           <div style="font-weight:700;margin-bottom:4px">${p.title||""}</div>
@@ -69,35 +70,18 @@ function initMap() {
     markers.push(mk);
   });
 
-  // ✅ isEmpty() 대신 간단히 개수로 체크
-  if (PLACES.length) map.fitBounds(bounds);
-
-  // 탭/섹션 보정
-  setTimeout(() => naver.maps.Event.trigger(map, "resize"), 80);
+  if (markers.length) map.fitBounds(bounds);
+  setTimeout(()=> naver.maps.Event.trigger(map, "resize"), 80);
 }
 
-function wireMapButton() {
-  const btn = document.getElementById("openMap");
-  if (!btn) return;
-  btn.addEventListener("click", async () => {
-    if (mapLoaded) return;
-    btn.textContent = "지도를 불러오는 중...";
-    try {
-      await loadNaverSdkOnce();
-      initMap();
-      mapLoaded = true;
-      const img = document.querySelector("#mapWrap > img");
-      if (img) img.style.display = "none";
-      btn.style.display = "none";
-    } catch (e) {
-      btn.textContent = "로드 실패. 다시 시도";
-      console.warn(e);
+// 뷰포트 근접 시 자동 로드(퍼포먼스 유지)
+(function(){
+  const el = document.getElementById("mapWrap");
+  if(!el) return;
+  const io = new IntersectionObserver((entries)=>{
+    if(entries.some(e=>e.isIntersecting)){
+      io.disconnect(); initMap();
     }
-  });
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", wireMapButton);
-} else {
-  wireMapButton();
-}
+  }, {rootMargin:"200px 0px"}); // 화면 위/아래 200px 근접 시 로드
+  io.observe(el);
+})();
