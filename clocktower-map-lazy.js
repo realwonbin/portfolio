@@ -55,15 +55,19 @@ async function initMap(){
     mk.__meta = p;
     naver.maps.Event.addListener(mk, "click", ()=>{
       const html = `
-        <div style="min-width:200px">
-          <div style="font-weight:700;margin-bottom:4px">${p.title||""}</div>
-          <div style="color:#9aa0a6;font-size:12px;margin-bottom:8px">${p.note||""}</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            ${p.id ? `<a class="btn" href="?id=${p.id}" style="padding:4px 8px;border-radius:8px;border:1px solid #333">이미지 보기</a>` : ""}
-            <a class="btn" href="https://map.naver.com/v5/?ll=${p.lat},${p.lng}&c=16,0,0,0,dh" target="_blank" rel="noopener"
-               style="padding:4px 8px;border-radius:8px;border:1px solid #333">네이버지도</a>
-          </div>
-        </div>`;
+            <div style="min-width:220px">
+                <div style="font-weight:700;margin-bottom:4px">${p.title||""}</div>
+                <div style="color:#9aa0a6;font-size:12px;margin-bottom:10px">${p.note||""}</div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                ${p.id ? `<a class="btn" href="?id=${p.id}" style="padding:4px 8px;border-radius:8px;border:1px solid #333">이미지 보기</a>` : ""}
+                <a class="btn" href="${p.naverUrl || `https://map.naver.com/v5/?ll=${p.lat},${p.lng}&c=16,0,0,0,dh`}"
+                    target="_blank" rel="noopener"
+                    style="padding:4px 8px;border-radius:8px;border:1px solid #333">
+                    네이버지도에서 열기
+                </a>
+                </div>
+            </div>`;
+
       info.setContent(html);
       info.open(map, mk);
     });
