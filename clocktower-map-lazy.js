@@ -1,21 +1,20 @@
 // clocktower-map-lazy.js — 시계탑 페이지 전용, 클릭 시 Naver Maps SDK 로드
 
-// 0) 좌표 데이터
+// 시범 좌표(원하면 바로 교체)
 const PLACES = [
-  // { id, title, lat, lng, note }
   { id:"wonju-musil-park", title:"원주 무실 체육공원 시계탑", lat:37.34123, lng:127.92345, note:"야간 조명 약함" },
   { id:"yanggu-rotary",    title:"양구 로터리 시계",           lat:38.10651, lng:127.98992, note:"교차로 중앙" },
 ];
 
 // ✅ 새 정책: ncpKeyId 사용
-const NCP_KEY_ID = "5yei7ae3lp";  
+const NCP_KEY_ID = "5yei7ae3lp";  // 예: abcd1234efgh5678
 
 let map, info, markers = [], mapLoaded = false;
 
-// 인증 실패 시 메시지 보이기(선택)
+// 인증 실패 콜백(문구 표시)
 window.navermap_authFailure = function () {
   const btn = document.getElementById("openMap");
-  if (btn) btn.textContent = "인증 실패 — 콘솔의 도메인/키 확인";
+  if (btn) btn.textContent = "인증 실패 — 콘솔의 도메인/키를 확인하세요";
   console.warn("Naver Maps auth failed. Check ncpKeyId & Web URL origins.");
 };
 
@@ -36,7 +35,7 @@ function initMap() {
 
   const center = PLACES.length
     ? new naver.maps.LatLng(PLACES[0].lat, PLACES[0].lng)
-    : new naver.maps.LatLng(37.5665, 126.9780);
+    : new naver.maps.LatLng(37.5665, 126.9780); // 서울
 
   map = new naver.maps.Map("map", {
     center, zoom: 9, scaleControl: true, zoomControl: true, mapDataControl: false
@@ -70,7 +69,10 @@ function initMap() {
     markers.push(mk);
   });
 
-  if (!bounds.isEmpty()) map.fitBounds(bounds);
+  // ✅ isEmpty() 대신 간단히 개수로 체크
+  if (PLACES.length) map.fitBounds(bounds);
+
+  // 탭/섹션 보정
   setTimeout(() => naver.maps.Event.trigger(map, "resize"), 80);
 }
 
