@@ -1,0 +1,135 @@
+/* =========================
+   style-cont-dark.css
+   - '시계탑' 등 어두운 배경이 필요한 페이지 전용
+   - 원본 style-cont.css 위에 추가로 로드하세요.
+   ========================= */
+
+/* 다크 팔레트 토큰 */
+:root{
+  --bg:#0e0e0f;
+  --fg:#e7e7ea;
+  --muted:#a4a8b0;
+  --line:#232327;
+  --accent:#7aa2ff;
+  --paper:#121215;   /* 카드/박스 배경 */
+  --thumb:#0a0a0b;   /* 이미지 영역 바탕 */
+  --link:#86b7ff;    /* 본문 링크 */
+  --link-hover:#bcd1ff;
+}
+
+/* 문서 기본 */
+html, body{
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+
+/* 본문 컨테이너 */
+.container{
+  /* 원본 max-width/line-height 그대로 유지 */
+  background: transparent;
+  color: var(--fg);
+}
+
+/* 제목 */
+h2{
+  color: var(--fg);
+}
+
+/* 본문 링크 */
+a{
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover{
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 인라인 토글 링크(문장 내 링크 스타일 계승) */
+.toggle-link{
+  color: var(--link);
+  transition: color .2s ease;
+}
+.toggle-link:hover{ color: var(--link-hover); }
+
+/* 접힘/펼침 콘텐츠 박스(밝은 배경 → 어두운 카드) */
+.hidden-content{
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg);
+}
+.hidden-content.show{
+  /* 원본 동작 유지 */
+  padding: 12px;
+}
+
+/* 이미지 스타일: 어두운 배경에서 경계 선명도 확보 */
+.image-gallery img{
+  border-radius: 6px;
+  background: var(--thumb);
+  /* 얇은 매트 효과(사진이 어두워도 분리감 ↑) */
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 0 0 1px rgba(0,0,0,.40);
+}
+
+/* 갤러리 그리드(열/갭은 원본 유지, 색만 다크) */
+.image-gallery{ /* 공통 래퍼에 여백이 필요하면 여기 추가 */
+  /* no-op */
+}
+.image-gallery.one,
+.image-gallery.two,
+.image-gallery.three,
+.image-gallery.four,
+.image-gallery.five,
+.image-gallery.six,
+.image-gallery.seven{
+  /* 원본 그리드 정의 유지 */
+  /* gap: 3px 유지 */
+}
+
+/* 이미지 로드 실패 기본 처리(다크 톤) */
+.hidden-content img{
+  background: var(--thumb);
+}
+.hidden-content img[src="default.jpg"]{
+  opacity: .6;
+  filter: grayscale(50%);
+}
+
+/* 드롭다운/푸터(컨트롤 UI를 다크로) */
+#project-select{
+  background-color: var(--paper);
+  color: var(--fg);
+  border: 1px solid var(--line);
+}
+.footer{
+  color: var(--muted);
+}
+
+/* 팝업/갤러리 래퍼 최대폭 유지(원본 계승) */
+.popup-layout .image-gallery{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 미세 타이포/보조 텍스트 */
+.muted, .desc{
+  color: var(--muted);
+}
+
+/* 경계선이 필요한 모든 박스에 공통 적용하고 싶을 때(선택):
+   .boxed { background:var(--paper); border:1px solid var(--line); border-radius:8px; } */
+
+/* 반응형은 원본 규칙 그대로 재사용 */
+@media (max-width: 1024px){
+  .image-gallery{ grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 768px){
+  .image-gallery{ grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 480px){
+  .image-gallery{ grid-template-columns: repeat(5, 1fr); }
+}
