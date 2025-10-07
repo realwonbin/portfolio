@@ -72,7 +72,7 @@
 
 <div id="mapWrap" style="border:1px solid var(--line,#232327);border-radius:12px;overflow:hidden">
   <!-- 정적 프리뷰 이미지: 없으면 이 <img>는 지워도 됨 -->
-  <img src="images/static-map.jpg" alt="지도 미리보기" width="100%" height="auto" loading="lazy">
+  <img src="../images/static-map.jpg" alt="지도 미리보기" width="100%" height="auto" loading="lazy">
 
   <div style="display:flex;justify-content:center;padding:8px">
     <button id="openMap" class="btn" style="padding:8px 12px;border-radius:10px;border:1px solid var(--line,#232327);background:#121215;color:#e7e7ea">
@@ -115,9 +115,7 @@
 
 
     <!-- body 닫기 직전: SDK + 지도 스크립트 -->
-    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5yei7ae3lp" defer></script>
-    <script src="../js/clocktower-map.js" defer></script>
-    <script src="js/clocktower-map-lazy.js" defer></script>
+   <script src="../clocktower-map-lazy.js" defer></script>
 
 </body>
 </html>
