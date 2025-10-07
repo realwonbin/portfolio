@@ -1,21 +1,29 @@
 // clocktower-map-lazy.js — 시계탑 페이지 전용, 클릭 시 Naver Maps SDK 로드
 
-// 0) 좌표 데이터: 네이버지도 '공유>링크'의 ll=위도,경도 값 사용
+// 0) 좌표 데이터
 const PLACES = [
-  // 예시: { id, title, lat, lng, note }
+  // { id, title, lat, lng, note }
   { id:"wonju-musil-park", title:"원주 무실 체육공원 시계탑", lat:37.34123, lng:127.92345, note:"야간 조명 약함" },
   { id:"yanggu-rotary",    title:"양구 로터리 시계",           lat:38.10651, lng:127.98992, note:"교차로 중앙" },
-  // ... 계속 추가
 ];
 
-const NCP_CLIENT_ID = "5yei7ae3lp"; // 네이버 클라우드 Client ID로 교체
+// ✅ 새 정책: ncpKeyId 사용
+const NCP_KEY_ID = "5yei7ae3lp";  
+
 let map, info, markers = [], mapLoaded = false;
+
+// 인증 실패 시 메시지 보이기(선택)
+window.navermap_authFailure = function () {
+  const btn = document.getElementById("openMap");
+  if (btn) btn.textContent = "인증 실패 — 콘솔의 도메인/키 확인";
+  console.warn("Naver Maps auth failed. Check ncpKeyId & Web URL origins.");
+};
 
 function loadNaverSdkOnce() {
   return new Promise((res, rej) => {
     if (window.naver && window.naver.maps) return res();
     const s = document.createElement("script");
-    s.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NCP_CLIENT_ID}`;
+    s.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NCP_KEY_ID}`;
     s.onload = () => res();
     s.onerror = () => rej(new Error("Naver Maps SDK load failed"));
     document.head.appendChild(s);
@@ -63,7 +71,6 @@ function initMap() {
   });
 
   if (!bounds.isEmpty()) map.fitBounds(bounds);
-  // 혹시 탭/섹션 숨김인 상태에서 열렸다면 리사이즈 보정
   setTimeout(() => naver.maps.Event.trigger(map, "resize"), 80);
 }
 
@@ -71,13 +78,12 @@ function wireMapButton() {
   const btn = document.getElementById("openMap");
   if (!btn) return;
   btn.addEventListener("click", async () => {
-    if (mapLoaded) return; // 한 번만 로드
+    if (mapLoaded) return;
     btn.textContent = "지도를 불러오는 중...";
     try {
       await loadNaverSdkOnce();
       initMap();
       mapLoaded = true;
-      // 프리뷰 이미지는 숨김
       const img = document.querySelector("#mapWrap > img");
       if (img) img.style.display = "none";
       btn.style.display = "none";
@@ -88,7 +94,6 @@ function wireMapButton() {
   });
 }
 
-// DOM 준비 후 버튼 바인딩
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", wireMapButton);
 } else {
