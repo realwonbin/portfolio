@@ -19,6 +19,15 @@ function loadScript(src) {
     document.head.appendChild(s);
   });
 }
+
+function setPage(page){
+  const isGallery = page!=="map"; // 기본 이미지
+  document.getElementById("sec-gallery").classList.toggle("hidden", !isGallery);
+  document.getElementById("sec-map").classList.toggle("hidden", isGallery);
+  // 지도 탭으로 넘어갈 때만 lazy init
+  if (!isGallery) { window.initMap?.(); }
+}
+
 async function ensureSdk() {
   if (window.naver && window.naver.maps) return;
   await loadScript(`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NCP_KEY_ID}`);
