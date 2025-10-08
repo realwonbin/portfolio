@@ -24,9 +24,20 @@ function setPage(page){
   const isGallery = page!=="map"; // 기본 이미지
   document.getElementById("sec-gallery").classList.toggle("hidden", !isGallery);
   document.getElementById("sec-map").classList.toggle("hidden", isGallery);
-  // 지도 탭으로 넘어갈 때만 lazy init
-  if (!isGallery) { window.initMap?.(); }
+
+  if (!isGallery) {
+    if (!mapLoaded) {
+      window.initMap?.();
+    } else {
+      // 이미 로드돼 있으면 리사이즈/중심 보정
+      requestAnimationFrame(()=>{
+        naver.maps.Event.trigger(map, "resize");
+      });
+    }
+  }
 }
+window.setPage = setPage;   // 외부에서 호출할 수 있게 노출
+
 
 async function ensureSdk() {
   if (window.naver && window.naver.maps) return;
@@ -133,6 +144,7 @@ async function initMap() {
       btn.addEventListener("click", () => initMap(), { once: true });
     }
   }
+  window.initMap = initMap;
 }
 
 // Lazy load
