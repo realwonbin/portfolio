@@ -170,3 +170,83 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("map-open");
   if (btn) btn.addEventListener("click", () => initMap(), { once: true });
 });
+
+let modalMap = null, modalInfo = null, modalMarkers = null;
+let modalLoaded = false;  // 모달용 SDK/데이터 로드 완료 플래그
+
+async function openMapModal(){
+  const modal = document.getElementById('mapModal');
+  const inner = document.getElementById('mapModalInner');
+  if(!modal || !inner) return;
+
+  // 모달 표시
+  modal.hidden = false;
+  modal.setAttribute('aria-hidden','false');
+
+  // 첫 오픈 시에만 로드
+  if(!modalLoaded){
+    await ensureSdk();
+    const PLACES = await fetchPlaces();
+
+    // 지도 만들기
+    const center = PLACES.length
+      ? new naver.maps.LatLng(PLACES[0].lat, PLACES[0].lng)
+      : new naver.maps.LatLng(37.5665, 126.9780);
+
+    modalMap = new naver.maps.Map(inner, {
+      center, zoom: 9, scaleControl: true, zoomControl: true, mapDataControl: false
+    });
+
+    modalInfo = new naver.maps.InfoWindow({
+      anchorSkew: true, backgroundColor: "#111", borderColor: "#333",
+      pixelOffset: new naver.maps.Point(0, -8)
+    });
+
+    const bounds = new naver.maps.LatLngBounds();
+    modalMarkers = [];
+
+    for(const p of PLACES){
+      const pos = new naver.maps.LatLng(p.lat, p.lng);
+      bounds.extend(pos);
+      const mk = new naver.maps.Marker({ position: pos, map: modalMap, title: p.title||"" });
+      naver.maps.Event.addListener(mk, "click", ()=>{
+        modalInfo.setContent(makeInfoHtml(p)); // 네가 이미 가진 함수
+        modalInfo.open(modalMap, mk);
+      });
+      modalMarkers.push(mk);
+    }
+    if(modalMarkers.length){
+      try { modalMap.fitBounds(bounds, {top:20,right:20,bottom:20,left:20}); }
+      catch { modalMap.fitBounds(bounds); }
+      setTimeout(()=>naver.maps.Event.trigger(modalMap,"resize"),120);
+    }
+    modalLoaded = true;
+  }else{
+    // 재오픈 시 사이즈 보정
+    requestAnimationFrame(()=> naver.maps.Event.trigger(modalMap, "resize"));
+  }
+
+  // ESC로 닫기
+  const esc = (e)=>{ if(e.key==="Escape") closeMapModal(); };
+  document.addEventListener('keydown', esc, { once:true });
+}
+
+function closeMapModal(){
+  const modal = document.getElementById('mapModal');
+  if(!modal) return;
+  modal.hidden = true;
+  modal.setAttribute('aria-hidden','true');
+  // 필요하면 메모리 바로 회수(지도를 파괴) — 정말 가볍게 유지하고 싶을 때:
+  // document.getElementById('mapModalInner').innerHTML = "";
+  // modalMap = null; modalInfo = null; modalMarkers = null; modalLoaded = false;
+}
+
+// 런처 버튼과 닫기 바인딩
+document.addEventListener('DOMContentLoaded', ()=>{
+  const openBtn  = document.getElementById('map-open');
+  const closeBtn = document.getElementById('map-close');
+  const closeBg  = document.getElementById('map-close-bg');
+  openBtn && openBtn.addEventListener('click', openMapModal);
+  closeBtn && closeBtn.addEventListener('click', closeMapModal);
+  closeBg && closeBg.addEventListener('click', closeMapModal);
+});

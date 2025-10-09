@@ -67,13 +67,18 @@
     <p>
         ㅇㅇㅇㅇㅇ
       <p></p>
+      <div class="map-launch">
+  <button id="map-open" class="btn-mapline" type="button">인터랙티브 지도 열기</button>
+</div>
       <!-- (갤러리 아래에) 지도 섹션 추가 -->
-<section id="sec-map" class="hidden">
-  <div id="mapWrap" class="mapbox">
-    <button id="map-open" class="btn-map" type="button">인터랙티브 지도 열기</button>
-    <div id="map" class="hidden" aria-hidden="true"></div>
+<!-- 지도 모달 -->
+<div id="mapModal" class="map-modal" hidden aria-hidden="true">
+  <div class="map-modal__backdrop" role="button" id="map-close-bg"></div>
+  <div class="map-modal__panel" role="dialog" aria-label="시계탑 지도">
+    <button id="map-close" class="map-modal__close" aria-label="닫기">×</button>
+    <div id="mapModalInner"></div>
   </div>
-</section>
+</div>
 
 
 <!-- 지도 스크립트 -->
