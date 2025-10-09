@@ -1,5 +1,5 @@
-// clocktower-map-lazy.js — 지도 모달 전용
-const NCP_KEY_ID = "5yei7ae3lp";   // 네이버 클라우드 콘솔 ncpKeyId
+// clocktower-map-lazy.js
+const NCP_KEY_ID = "5yei7ae3lp";
 
 let map, info, markers = [];
 let mapLoaded = false;
@@ -13,15 +13,12 @@ function loadScript(src){
     document.head.appendChild(s);
   });
 }
-
 async function ensureNaverSdk(){
   if (sdkReady) return;
   await loadScript(`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NCP_KEY_ID}`);
   sdkReady = true;
 }
-
 async function fetchPlaces(){
-  // 경로는 프로젝트에 맞게 조정
   const r = await fetch("../data/clock-places.json", { cache:"no-store" });
   if (!r.ok) throw new Error("places json load failed");
   return r.json();
@@ -44,7 +41,6 @@ async function initMapInModal(){
   await ensureNaverSdk();
   const PLACES = await fetchPlaces();
 
-  // 모달 안쪽에 지도 컨테이너 생성
   const inner = document.getElementById("mapModalInner");
   inner.innerHTML = '<div id="map" style="width:100%;height:100%"></div>';
 
@@ -67,7 +63,6 @@ async function initMapInModal(){
     const pos = new naver.maps.LatLng(p.lat, p.lng);
     bounds.extend(pos);
     const mk = new naver.maps.Marker({ position:pos, map, title:p.title||"" });
-    mk.__meta = p;
     naver.maps.Event.addListener(mk,"click",()=>{
       info.setContent(`
         <div style="min-width:220px">
@@ -89,7 +84,6 @@ async function initMapInModal(){
   mapLoaded = true;
 }
 
-/* 이벤트 바인딩 */
 document.addEventListener("DOMContentLoaded", ()=>{
   const openBtn = document.getElementById("map-open");
   const closeBtn = document.getElementById("map-close");
@@ -97,20 +91,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   if (openBtn) openBtn.addEventListener("click", async ()=>{
     openModal();
-    await initMapInModal();
-  }, { once:false });
-
-  [closeBtn, closeBg].forEach(el=>{
-    if (el) el.addEventListener("click", closeModal);
+    try { await initMapInModal(); }
+    catch (e){ console.error(e); }
   });
 
-  // ESC 닫기
-  document.addEventListener("keydown", (e)=>{
-    if (e.key === "Escape") closeModal();
-  });
+  [closeBtn, closeBg].forEach(el=> el && el.addEventListener("click", closeModal));
+  document.addEventListener("keydown", (e)=>{ if (e.key === "Escape") closeModal(); });
 });
 
-/* 인증 실패 디버깅 */
 window.navermap_authFailure = function(){
   console.warn("[NaverMaps] 인증 실패 — ncpKeyId 또는 Web URL origins 확인 필요");
 };
