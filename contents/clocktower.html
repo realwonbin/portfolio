@@ -158,6 +158,33 @@
     else window.addEventListener('load', initLB);
   })();
 </script>
+<script>
+  // ==== Lightbox 강제 그룹화 + 초기화 보강 ====
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1) 갤러리 내 모든 앵커를 한 그룹으로 강제 세팅
+    const anchors = document.querySelectorAll(
+      '.image-gallery a[href$=".jpg"], .image-gallery a[href$=".jpeg"], .image-gallery a[href$=".png"]'
+    );
+    anchors.forEach(a => a.setAttribute('data-lightbox', 'clock')); // <= 같은 그룹명
+
+    // 2) Lightbox 옵션 (CDN 차단 등으로 없을 수도 있으니 방어)
+    if (window.lightbox && typeof lightbox.option === 'function') {
+      lightbox.option({
+        resizeDuration: 200,
+        wrapAround: true,
+        disableScrolling: true,
+        alwaysShowNavOnTouchDevices: true,
+        showImageNumberLabel: false
+      });
+    } else {
+      // 디버깅용: 콘솔에서 lightbox 로드 상태 확인
+      console.warn('[Lightbox] 스크립트가 로드되지 않았습니다. (CDN 차단 가능성)');
+    }
+
+    // 3) 진단 로그 (원할 때만 확인)
+    // console.log('[Lightbox] grouped anchors =', anchors.length);
+  });
+</script>
 
 <!-- 지도 스크립트 -->
 <script src="../clocktower-map-lazy.js" defer></script>
