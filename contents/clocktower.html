@@ -61,12 +61,11 @@
         <a href="../images-large/clocktower/img25.jpg" data-lightbox="clock" data-title="조화"><img src="../images/clocktower/img25.jpg" alt="이미지 25" /></a>
       </div>
 
-      <!-- 2019 선행 작업: 버튼 + JS 토글(안전) -->
-      <div style="margin-top:12px">
-        <button id="more-toggle" class="btn-line small" type="button" aria-expanded="false" aria-controls="moreGallery">
-          📂 2019 선행 작업 보기
-        </button>
-      </div>
+      <!-- 2019 선행 작업: details/summary (JS 불필요) -->
+<details id="more" class="more-gallery" style="margin-top:12px">
+  <summary class="btn-line small" style="list-style:none; cursor:pointer;">
+    📂 2019 선행 작업 보기
+  </summary>
 
       <div id="moreGallery" class="hidden-content flat" hidden>
         <div class="image-gallery four" style="margin-top:12px">
@@ -102,7 +101,7 @@
         <button id="map-open" class="btn-mapline" type="button" aria-haspopup="dialog" aria-controls="mapModal">
           🗺️ 지도 보기
         </button>
-        <span class="muted" style="margin-left:8px">지도가 모달로 열립니다.</span>
+        <span class="muted" style="margin-left:8px">지도가 열립니다.</span>
       </div>
     </div>
   </section>
