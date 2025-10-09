@@ -140,3 +140,31 @@ a:hover{
   border:1px solid var(--line,#232327); border-radius:10px;
   background:#00000055; color:#fff; cursor:pointer
 }
+/* 어두운 톤의 라인 버튼 (밝아 보이던 기본 버튼 대체) */
+.btn-line{
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.btn-line.small{ font-size:14px; padding:6px 10px; }
+.btn-line:hover,
+.btn-line:focus-visible{ outline:2px solid var(--accent); }
+
+/* 토글 패널을 '평면(flat)'으로: 별도 박스 느낌 제거 + 내부 스크롤 금지 */
+.hidden-content.flat{
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.more-gallery .image-gallery img{
+  background: var(--thumb);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 0 0 1px rgba(0,0,0,.40);
+}
+
+/* 혹시 브라우저가 [hidden]을 무시할 때 대비 */
+[hidden]{ display:none !important; }

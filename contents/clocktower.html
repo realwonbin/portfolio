@@ -59,18 +59,18 @@
         <a href="../images-large/clocktower/img25.jpg" data-lightbox="gallery" data-title="조화"><img src="../images/clocktower/img25.jpg" alt="이미지 25" /></a>
         
       </div>
-      <!-- ▼▼ 보조 이미지: 접힘/펼침 토글 ▼▼ -->
+<!-- ▼ 2019 선행 작업: 접힘/펼침 토글 ▼ -->
 <div class="more-gallery">
   <button id="moreToggle"
-          class="toggle-link"
+          class="btn-line small"
           type="button"
           aria-controls="moreGallery"
           aria-expanded="false">
-    🖼️ 보조 이미지 열기
+    📂 2019 선행 작업 보기
   </button>
 
-  <div id="moreGallery" class="hidden-content" hidden>
-    <div class="image-gallery four" style="margin-top:10px">
+  <div id="moreGallery" class="hidden-content flat" hidden>
+    <div class="image-gallery four" style="margin-top:12px">
       <a href="../images/clocktower/b-1.jpg"  data-lightbox="gallery" data-title="조화"><img src="../images/clocktower/b-1.jpg"  alt="이미지 1"  loading="lazy" /></a>
       <a href="../images/clocktower/b-2.jpg"  data-lightbox="gallery" data-title="조화"><img src="../images/clocktower/b-2.jpg"  alt="이미지 2"  loading="lazy" /></a>
       <a href="../images/clocktower/b-3.jpg"  data-lightbox="gallery" data-title="조화"><img src="../images/clocktower/b-3.jpg"  alt="이미지 3"  loading="lazy" /></a>
@@ -166,7 +166,7 @@
 </script>
 <script src="../clocktower-map-lazy.js" defer></script>
 <script>
-  // 보조 갤러리 접힘/펼침
+  // 2019 선행 작업 접힘/펼침
   document.addEventListener('DOMContentLoaded', () => {
     const btn   = document.getElementById('moreToggle');
     const panel = document.getElementById('moreGallery');
@@ -175,18 +175,20 @@
     btn.addEventListener('click', () => {
       const open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
+
       if (open) {
-        panel.setAttribute('hidden', '');
-        panel.classList.remove('show');     // 다크 테마 padding 제거
-        btn.textContent = '🖼️ 보조 이미지 열기';
+        panel.hidden = true;
+        btn.textContent = '📂 2019 선행 작업 보기';
       } else {
-        panel.removeAttribute('hidden');
-        panel.classList.add('show');        // 다크 테마 카드 padding 적용
-        btn.textContent = '🗂️ 보조 이미지 접기';
+        panel.hidden = false;
+        btn.textContent = '📁 2019 선행 작업 접기';
+        // 펼친 직후에도 페이지 전체 스크롤만 사용(내부 높이 제한 X)
+        panel.style.maxHeight = 'none';
       }
     });
   });
 </script>
+
 
 </body>
 </html>
