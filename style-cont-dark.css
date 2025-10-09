@@ -25,15 +25,12 @@ html, body{
 
 /* 본문 컨테이너 */
 .container{
-  /* 원본 max-width/line-height 그대로 유지 */
   background: transparent;
   color: var(--fg);
 }
 
 /* 제목 */
-h2{
-  color: var(--fg);
-}
+h2{ color: var(--fg); }
 
 /* 본문 링크 */
 a{
@@ -46,152 +43,84 @@ a:hover{
   text-underline-offset: 2px;
 }
 
-/* 인라인 토글 링크(문장 내 링크 스타일 계승) */
-.toggle-link{
-  color: var(--link);
-  transition: color .2s ease;
-}
+/* 인라인 토글 링크 */
+.toggle-link{ color: var(--link); transition: color .2s ease; }
 .toggle-link:hover{ color: var(--link-hover); }
 
-/* 접힘/펼침 콘텐츠 박스(밝은 배경 → 어두운 카드) */
+/* 접힘/펼침 박스 */
 .hidden-content{
   background-color: var(--paper);
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--fg);
 }
-.hidden-content.show{
-  /* 원본 동작 유지 */
-  padding: 12px;
-}
+.hidden-content.show{ padding: 12px; }
 
-/* 이미지 스타일: 어두운 배경에서 경계 선명도 확보 */
+/* 이미지 대비 보강(얇은 매트) */
 .image-gallery img{
   border-radius: 6px;
   background: var(--thumb);
-  /* 얇은 매트 효과(사진이 어두워도 분리감 ↑) */
   box-shadow:
     0 0 0 1px rgba(255,255,255,.06) inset,
     0 0 0 1px rgba(0,0,0,.40);
 }
 
-/* 갤러리 그리드(열/갭은 원본 유지, 색만 다크) */
-.image-gallery{ /* 공통 래퍼에 여백이 필요하면 여기 추가 */
-  /* no-op */
-}
+/* 갤러리 그리드(색상만 다크) */
+.image-gallery{ /* no-op */ }
 .image-gallery.one,
 .image-gallery.two,
 .image-gallery.three,
 .image-gallery.four,
 .image-gallery.five,
 .image-gallery.six,
-.image-gallery.seven{
-  /* 원본 그리드 정의 유지 */
-  /* gap: 3px 유지 */
-}
+.image-gallery.seven{ /* 원본 그리드 규칙 사용 */ }
 
-/* 이미지 로드 실패 기본 처리(다크 톤) */
-.hidden-content img{
-  background: var(--thumb);
-}
-.hidden-content img[src="default.jpg"]{
-  opacity: .6;
-  filter: grayscale(50%);
-}
+/* 이미지 로드 실패 기본 처리 */
+.hidden-content img{ background: var(--thumb); }
+.hidden-content img[src="default.jpg"]{ opacity: .6; filter: grayscale(50%); }
 
-/* 드롭다운/푸터(컨트롤 UI를 다크로) */
+/* 컨트롤/푸터 */
 #project-select{
   background-color: var(--paper);
   color: var(--fg);
   border: 1px solid var(--line);
 }
-.footer{
-  color: var(--muted);
-}
+.footer{ color: var(--muted); }
 
-/* 팝업/갤러리 래퍼 최대폭 유지(원본 계승) */
+/* 팝업/갤러리 래퍼 */
 .popup-layout .image-gallery{
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; margin: 0 auto;
 }
 
-/* 미세 타이포/보조 텍스트 */
-.muted, .desc{
-  color: var(--muted);
-}
+/* 보조 텍스트 */
+.muted, .desc{ color: var(--muted); }
 
-/* 경계선이 필요한 모든 박스에 공통 적용하고 싶을 때(선택):
-   .boxed { background:var(--paper); border:1px solid var(--line); border-radius:8px; } */
-
-/* 반응형은 원본 규칙 그대로 재사용 */
+/* 반응형(카드 폭 키움) */
+.grid{ display:grid; gap:14px }
 @media (min-width:1024px){
-  /* 카드 최소폭 320~360px 권장 */
-  .grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .grid{ grid-template-columns:repeat(auto-fill,minmax(320px,1fr)) }
 }
 @media (min-width:1440px){
-  .grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+  .grid{ grid-template-columns:repeat(auto-fill,minmax(360px,1fr)) }
 }
 
-/* 공통 래퍼 */
-.wrap{max-width:1200px;margin:0 auto;padding:16px}
-
-/* 이미지 섹션만 넓게(1600px) */
-.section--wide .wrap{max-width:1600px}
-
-/* 그리드 카드 사이즈 상향 */
-.grid{display:grid;gap:14px}
-@media (min-width:1024px){
-  /* 카드 최소폭 320~360px 권장 */
-  .grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-}
-@media (min-width:1440px){
-  .grid{grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}
+/* 썸네일 */
+.thumb{
+  aspect-ratio:4/3; width:100%; object-fit:cover; display:block;
+  background:#0a0a0b;
 }
 
-/* 썸네일 더 크고 대비 강하게 */
-.thumb{aspect-ratio:4/3;width:100%;object-fit:cover;display:block;
-  background:#0a0a0b; /* 어두운 캔버스 */
-}
+/* 모달 이미지 더 크게 */
+.modal img{ max-width:96vw; max-height:86vh; object-fit:contain }
 
-/* 모달에서 더 크게 보여주기 */
-.modal img{max-width:96vw;max-height:86vh;object-fit:contain}
-
-/* 공통 */
-.mapbox{
-  position: relative;
-  height: 60vh;              /* 필요시 56~70vh로 조정 */
-  min-height: 480px;
-  border: 1px solid var(--line, #232327);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--paper, #121215); /* 프리뷰 이미지가 없을 때 배경 */
-}
-.mapbox__poster{
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: saturate(90%) contrast(95%);
-}
-.btn-map{
-  position: absolute; inset: auto 0 0 0; margin: 0 auto 16px;
-  width: max-content; padding: 10px 14px; border-radius: 10px;
-  background: #121215; color: var(--fg,#e7e7ea);
-  border: 1px solid var(--line,#232327); cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-.btn-map:hover{ outline: 2px solid var(--accent,#7aa2ff); }
-
-/* 실제 지도 노출 영역 */
-#map.hidden{ display: none; }
-#map{ width:100%; height:100%; }
-
-/* 얇은 런처 버튼 */
+/* ----- 지도 모달 / 런처 ----- */
 .btn-mapline{
-  padding:8px 12px;border-radius:10px;
-  background:var(--paper,#121215);color:var(--fg,#e7e7ea);
-  border:1px solid var(--line,#232327);cursor:pointer
+  padding:8px 12px; border-radius:10px;
+  background:var(--paper,#121215); color:var(--fg,#e7e7ea);
+  border:1px solid var(--line,#232327); cursor:pointer
 }
 .btn-mapline:hover{ outline:2px solid var(--accent,#7aa2ff) }
 
-/* 모달 */
 .map-modal[hidden]{ display:none }
 .map-modal{
   position:fixed; inset:0; z-index:1000; display:grid;

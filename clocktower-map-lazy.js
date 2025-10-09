@@ -1,6 +1,5 @@
 // clocktower-map-lazy.js — 시계탑 전용(최적화판, click-to-load)
-
-const NCP_KEY_ID = "5yei7ae3lp";
+const NCP_KEY_ID = "5yei7ae3lp"; // 네이버 클라우드 콘솔 ncpKeyId
 
 let map, info, markers = [];
 let mapLoaded = false;
@@ -35,9 +34,9 @@ async function fetchPlaces() {
 function buildNaverLinks(p) {
   const lat = Number(p.lat), lng = Number(p.lng);
   const titleEnc = encodeURIComponent(p.title || "");
-  // 웹: ll + c(zoom,lng,lat,...)로 센터 강제
+  // 웹: ll + c(zoom,lng,lat,...)로 센터 고정
   const web = p.naverUrl || `https://map.naver.com/v5/?ll=${lat},${lng}&c=16,${lng},${lat},0,0,dh`;
-  // 앱: place 스킴(모바일에서 더 안정적)
+  // 앱 스킴(모바일 안정)
   const app = `nmap://place?lat=${lat}&lng=${lng}&name=${titleEnc}&appname=kr.younglee.site`;
   return { web, app };
 }
@@ -69,126 +68,24 @@ function makeInfoHtml(p) {
   return wrap;
 }
 
-function showMapShell() {
-  const btn = document.getElementById("map-open");
-  const m   = document.getElementById("map");
-  if (btn && m) {
-    btn.style.display = "none";
-    m.classList.remove("hidden");
-    m.setAttribute("aria-hidden", "false");
-  }
-}
-
-async function initMap() {
-  if (mapLoaded || initStarted) return;
-  initStarted = true;
-  showMapShell(); // 버튼 감추고 지도 컨테이너 표시
-
-  try {
-    await ensureSdk();
-    const PLACES = await fetchPlaces();
-
-    const mapDiv = document.getElementById("map");
-    if (!mapDiv) throw new Error("#map element not found");
-
-    const center = PLACES.length
-      ? new naver.maps.LatLng(PLACES[0].lat, PLACES[0].lng)
-      : new naver.maps.LatLng(37.5665, 126.9780);
-
-    map = new naver.maps.Map("map", {
-      center,
-      zoom: 9,
-      scaleControl: true,
-      zoomControl: true,
-      mapDataControl: false
-    });
-
-    info = new naver.maps.InfoWindow({
-      anchorSkew: true,
-      backgroundColor: "#111",
-      borderColor: "#333",
-      pixelOffset: new naver.maps.Point(0, -8)
-    });
-
-    const bounds = new naver.maps.LatLngBounds();
-    markers = [];
-
-    for (const p of PLACES) {
-      const pos = new naver.maps.LatLng(p.lat, p.lng);
-      bounds.extend(pos);
-
-      const mk = new naver.maps.Marker({ position: pos, map, title: p.title || "" });
-      mk.__meta = p;
-
-      naver.maps.Event.addListener(mk, "click", () => {
-        info.setContent(makeInfoHtml(p));
-        info.open(map, mk);
-      });
-
-      markers.push(mk);
-    }
-
-    if (markers.length) {
-      try {
-        map.fitBounds(bounds, { top: 20, right: 20, bottom: 20, left: 20 });
-      } catch {
-        map.fitBounds(bounds);
-      }
-      setTimeout(() => naver.maps.Event.trigger(map, "resize"), 120);
-    }
-
-    mapLoaded = true;
-  } catch (err) {
-    initStarted = false;
-    console.error("[Clock Map] init failed:", err);
-    // 실패 시 버튼 다시 표시
-    const btn = document.getElementById("map-open");
-    const m   = document.getElementById("map");
-    if (btn && m) { btn.style.display = ""; m.classList.add("hidden"); }
-  }
-}
-window.initMap = initMap; // 외부 호출용 노출
-
-// 탭 전환(이미지/지도) — 지도 탭 가면 로드/리사이즈
-function setPage(page){
-  const isGallery = page !== "map"; // 기본: 이미지
-  document.getElementById("sec-gallery").classList.toggle("hidden", !isGallery);
-  document.getElementById("sec-map").classList.toggle("hidden", isGallery);
-
-  if (!isGallery) {
-    if (!mapLoaded) {
-      initMap();
-    } else {
-      requestAnimationFrame(()=> naver.maps.Event.trigger(map, "resize"));
-    }
-  }
-}
-window.setPage = setPage;
-
-// Click-to-load: 버튼으로만 로드
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("map-open");
-  if (btn) btn.addEventListener("click", () => initMap(), { once: true });
-});
-
+/* -------------------- 모달 지도 -------------------- */
 let modalMap = null, modalInfo = null, modalMarkers = null;
-let modalLoaded = false;  // 모달용 SDK/데이터 로드 완료 플래그
+let modalLoaded = false;  // SDK/데이터 로드 완료 플래그
 
 async function openMapModal(){
   const modal = document.getElementById('mapModal');
   const inner = document.getElementById('mapModalInner');
   if(!modal || !inner) return;
 
-  // 모달 표시
+  // 표시
   modal.hidden = false;
   modal.setAttribute('aria-hidden','false');
 
-  // 첫 오픈 시에만 로드
+  // 첫 오픈 시 로드/생성
   if(!modalLoaded){
     await ensureSdk();
     const PLACES = await fetchPlaces();
 
-    // 지도 만들기
     const center = PLACES.length
       ? new naver.maps.LatLng(PLACES[0].lat, PLACES[0].lng)
       : new naver.maps.LatLng(37.5665, 126.9780);
@@ -210,19 +107,21 @@ async function openMapModal(){
       bounds.extend(pos);
       const mk = new naver.maps.Marker({ position: pos, map: modalMap, title: p.title||"" });
       naver.maps.Event.addListener(mk, "click", ()=>{
-        modalInfo.setContent(makeInfoHtml(p)); // 네가 이미 가진 함수
+        modalInfo.setContent(makeInfoHtml(p));
         modalInfo.open(modalMap, mk);
       });
       modalMarkers.push(mk);
     }
+
     if(modalMarkers.length){
       try { modalMap.fitBounds(bounds, {top:20,right:20,bottom:20,left:20}); }
       catch { modalMap.fitBounds(bounds); }
       setTimeout(()=>naver.maps.Event.trigger(modalMap,"resize"),120);
     }
+
     modalLoaded = true;
   }else{
-    // 재오픈 시 사이즈 보정
+    // 재오픈 시 보정
     requestAnimationFrame(()=> naver.maps.Event.trigger(modalMap, "resize"));
   }
 
@@ -236,12 +135,9 @@ function closeMapModal(){
   if(!modal) return;
   modal.hidden = true;
   modal.setAttribute('aria-hidden','true');
-  // 필요하면 메모리 바로 회수(지도를 파괴) — 정말 가볍게 유지하고 싶을 때:
-  // document.getElementById('mapModalInner').innerHTML = "";
-  // modalMap = null; modalInfo = null; modalMarkers = null; modalLoaded = false;
 }
 
-// 런처 버튼과 닫기 바인딩
+// 버튼 바인딩
 document.addEventListener('DOMContentLoaded', ()=>{
   const openBtn  = document.getElementById('map-open');
   const closeBtn = document.getElementById('map-close');
