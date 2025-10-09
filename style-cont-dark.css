@@ -123,3 +123,7 @@ a:hover{ color:var(--link-hover); text-decoration:underline; text-underline-offs
 
 /* [hidden] 안전망 */
 [hidden]{ display:none !important; }
+
+.btn-line.small{font-size:14px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--fg)}
+.btn-line.small:hover{outline:2px solid var(--accent)}
+

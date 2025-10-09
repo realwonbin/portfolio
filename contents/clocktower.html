@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../style-mobile.css" media="only screen and (max-width: 480px)" />
 
   <script>
-    // 팝업 모드 지원(필요 시)
+    // (옵션) 팝업 모드 지원
     if (new URLSearchParams(location.search).get("mode") === "popup") {
       document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add("popup-layout");
@@ -32,7 +32,7 @@
   <section class="section section--wide">
     <div class="wrap">
 
-      <!-- 메인 갤러리: 모두 같은 그룹 "clock" 으로 묶기 -->
+      <!-- 메인 갤러리: 같은 그룹명 "clock" 으로 통일 -->
       <div class="image-gallery four">
         <a href="../images-large/clocktower/img1.jpg"  data-lightbox="clock" data-title="조화"><img src="../images/clocktower/img1.jpg"  alt="이미지 1"  /></a>
         <a href="../images-large/clocktower/img2.jpg"  data-lightbox="clock" data-title="조화"><img src="../images/clocktower/img2.jpg"  alt="이미지 2"  /></a>
@@ -61,48 +61,48 @@
         <a href="../images-large/clocktower/img25.jpg" data-lightbox="clock" data-title="조화"><img src="../images/clocktower/img25.jpg" alt="이미지 25" /></a>
       </div>
 
-      <!-- 2019 선행 작업: 네이티브 토글(details/summary) -->
-      <details class="more-gallery" style="margin-top:12px">
-        <summary class="btn-line small" role="button" aria-controls="moreGallery">
+      <!-- 2019 선행 작업: 버튼 + JS 토글(안전) -->
+      <div style="margin-top:12px">
+        <button id="more-toggle" class="btn-line small" type="button" aria-expanded="false" aria-controls="moreGallery">
           📂 2019 선행 작업 보기
-        </summary>
+        </button>
+      </div>
 
-        <div id="moreGallery" class="hidden-content flat">
-          <div class="image-gallery four" style="margin-top:12px">
-            <!-- 보정: 같은 그룹 "clock"으로 묶어서 라이트박스 내 연속 이동 가능 -->
-            <a href="../images/clocktower/b-1.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-1.jpg"  alt="2019-1"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-2.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-2.jpg"  alt="2019-2"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-3.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-3.jpg"  alt="2019-3"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-4.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-4.jpg"  alt="2019-4"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-5.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-5.jpg"  alt="2019-5"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-6.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-6.jpg"  alt="2019-6"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-7.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-7.jpg"  alt="2019-7"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-8.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-8.jpg"  alt="2019-8"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-9.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-9.jpg"  alt="2019-9"  loading="lazy" /></a>
-            <a href="../images/clocktower/b-10.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-10.jpg" alt="2019-10" loading="lazy" /></a>
-            <a href="../images/clocktower/b-11.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-11.jpg" alt="2019-11" loading="lazy" /></a>
-            <a href="../images/clocktower/b-12.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-12.jpg" alt="2019-12" loading="lazy" /></a>
-            <a href="../images/clocktower/b-13.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-13.jpg" alt="2019-13" loading="lazy" /></a>
-            <a href="../images/clocktower/b-14.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-14.jpg" alt="2019-14" loading="lazy" /></a>
-            <a href="../images/clocktower/b-15.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-15.jpg" alt="2019-15" loading="lazy" /></a>
-            <a href="../images/clocktower/b-16.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-16.jpg" alt="2019-16" loading="lazy" /></a>
-            <a href="../images/clocktower/b-17.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-17.jpg" alt="2019-17" loading="lazy" /></a>
-            <a href="../images/clocktower/b-18.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-18.jpg" alt="2019-18" loading="lazy" /></a>
-            <a href="../images/clocktower/b-19.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-19.jpg" alt="2019-19" loading="lazy" /></a>
-            <a href="../images/clocktower/b-20.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-20.jpg" alt="2019-20" loading="lazy" /></a>
-            <a href="../images/clocktower/b-21.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-21.jpg" alt="2019-21" loading="lazy" /></a>
-            <a href="../images/clocktower/b-22.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-22.jpg" alt="2019-22" loading="lazy" /></a>
-            <a href="../images/clocktower/b-23.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-23.jpg" alt="2019-23" loading="lazy" /></a>
-          </div>
+      <div id="moreGallery" class="hidden-content flat" hidden>
+        <div class="image-gallery four" style="margin-top:12px">
+          <!-- 같은 그룹 "clock"으로 묶어서 라이트박스 내 연속 이동 가능 -->
+          <a href="../images/clocktower/b-1.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-1.jpg"  alt="2019-1"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-2.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-2.jpg"  alt="2019-2"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-3.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-3.jpg"  alt="2019-3"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-4.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-4.jpg"  alt="2019-4"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-5.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-5.jpg"  alt="2019-5"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-6.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-6.jpg"  alt="2019-6"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-7.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-7.jpg"  alt="2019-7"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-8.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-8.jpg"  alt="2019-8"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-9.jpg"  data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-9.jpg"  alt="2019-9"  loading="lazy" /></a>
+          <a href="../images/clocktower/b-10.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-10.jpg" alt="2019-10" loading="lazy" /></a>
+          <a href="../images/clocktower/b-11.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-11.jpg" alt="2019-11" loading="lazy" /></a>
+          <a href="../images/clocktower/b-12.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-12.jpg" alt="2019-12" loading="lazy" /></a>
+          <a href="../images/clocktower/b-13.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-13.jpg" alt="2019-13" loading="lazy" /></a>
+          <a href="../images/clocktower/b-14.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-14.jpg" alt="2019-14" loading="lazy" /></a>
+          <a href="../images/clocktower/b-15.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-15.jpg" alt="2019-15" loading="lazy" /></a>
+          <a href="../images/clocktower/b-16.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-16.jpg" alt="2019-16" loading="lazy" /></a>
+          <a href="../images/clocktower/b-17.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-17.jpg" alt="2019-17" loading="lazy" /></a>
+          <a href="../images/clocktower/b-18.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-18.jpg" alt="2019-18" loading="lazy" /></a>
+          <a href="../images/clocktower/b-19.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-19.jpg" alt="2019-19" loading="lazy" /></a>
+          <a href="../images/clocktower/b-20.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-20.jpg" alt="2019-20" loading="lazy" /></a>
+          <a href="../images/clocktower/b-21.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-21.jpg" alt="2019-21" loading="lazy" /></a>
+          <a href="../images/clocktower/b-22.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-22.jpg" alt="2019-22" loading="lazy" /></a>
+          <a href="../images/clocktower/b-23.jpg" data-lightbox="clock" data-title="2019 작업"><img src="../images/clocktower/b-23.jpg" alt="2019-23" loading="lazy" /></a>
         </div>
-      </details>
+      </div>
 
       <!-- 지도 런처(모달) -->
       <div style="margin-top:18px">
         <button id="map-open" class="btn-mapline" type="button" aria-haspopup="dialog" aria-controls="mapModal">
           🗺️ 지도 보기
         </button>
-        <span class="muted" style="margin-left:8px">클릭하면 모달로 지도가 열립니다.</span>
+        <span class="muted" style="margin-left:8px">지도가 모달로 열립니다.</span>
       </div>
     </div>
   </section>
@@ -161,9 +161,28 @@
     alwaysShowNavOnTouchDevices: true,
     showImageNumberLabel: false
   });
+
+  // 2019 토글 (details 충돌 방지용 확실한 방식)
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const btn = document.getElementById('more-toggle');
+    const box = document.getElementById('moreGallery');
+    if (!btn || !box) return;
+    btn.addEventListener('click', ()=>{
+      const open = box.hasAttribute('hidden') ? false : true;
+      if (open) {
+        box.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent = '📂 2019 선행 작업 보기';
+      } else {
+        box.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded','true');
+        btn.textContent = '📁 2019 선행 작업 접기';
+      }
+    });
+  });
 </script>
 
-<!-- 네이버 지도(지연 로드 모달) -->
+<!-- 네이버 지도(모달 지연 로드) -->
 <script src="../clocktower-map-lazy.js" defer></script>
 </body>
 </html>
