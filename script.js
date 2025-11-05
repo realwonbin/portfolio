@@ -30,9 +30,10 @@
     }
 
     function syncFromHash(){
-      const id = location.hash.slice(1) || (sections[0] && sections[0].id);
-      if (id) setActive(id);
-    }
+  const h = location.hash.slice(1);
+  const id = (h && sectionIds.has(h)) ? h : 'intro1';   // 기본을 intro1로
+  setActive(id);
+}
 
     // 탭 클릭 (위임)
     nav?.addEventListener("click", (e) => {
