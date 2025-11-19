@@ -224,3 +224,7 @@ h2 {
   cursor: pointer;
   background-color: white;
 }
+
+.hidden-gallery {
+  display: none;
+}
