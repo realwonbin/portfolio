@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>평화와 통일</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../style-cont.css">
   <link rel="stylesheet" href="../style-mobile.css" media="only screen and (max-width: 480px)">
 </head>
@@ -17,10 +19,7 @@
     <h2>평화와 통일 / 2009-2010</h2>
     
     <!-- ✅ 이미지 갤러리 -->
-    <div class="image-gallery">
-      <div>
-        <img src="../images/pnr0910/img1.jpg" alt="프로젝트 1 이미지 1">
-      </div>
+    <div class="image-gallery"> 
       <div class="image-gallery four">
         <a href="../images/pnr0910/img1.jpg" data-lightbox="gallery" data-title="평화와통일 Peace and Unification, 40x50cm, pigment print, 2009-2010"><img src="../images/pnr0910/img1.jpg" alt="프로젝트 1 이미지 1"></a>
         <img src="../images/pnr0910/img2.jpg" alt="프로젝트 1 이미지 2">
@@ -125,5 +124,15 @@
          });
  }
  </script>-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script>
+      lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'disableScrolling': true,
+        'alwaysShowNavOnTouchDevices': true,
+        'showImageNumberLabel': false
+      });
+    </script>
 </body>
 </html>
