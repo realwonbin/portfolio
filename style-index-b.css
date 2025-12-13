@@ -9,30 +9,6 @@
   --radius:12px;
   --gap:20px;
 }
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: #fff;
-}
-
-.layout{
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.sidebar{
-  position: sticky;
-  top: 72px; /* 헤더 높이에 맞춰 조정 */
-  align-self: start;
-}
-
-@media (max-width: 900px){
-  .layout{ grid-template-columns: 1fr; }
-  .sidebar{ position: static; }
-}
 
 *{ box-sizing:border-box; }
 html, body{ height:100%; }
