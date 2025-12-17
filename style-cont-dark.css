@@ -1,0 +1,130 @@
+/* =========================
+   style-cont-dark.css
+   - '시계탑' 등 어두운 배경 페이지 전용
+   - 기본 style-cont.css 위에 추가 로드
+   ========================= */
+
+/* 다크 팔레트 */
+:root{
+  --bg:#0e0e0f;
+  --fg:#e7e7ea;
+  --muted:#a4a8b0;
+  --line:#232327;
+  --accent:#7aa2ff;
+  --paper:#121215;
+  --thumb:#0a0a0b;
+  --link:#86b7ff;
+  --link-hover:#bcd1ff;
+}
+
+/* 기본 톤 */
+html, body{ background-color:var(--bg)!important; color:var(--fg)!important; }
+.container{ background:transparent; color:var(--fg); }
+h2{ color:var(--fg); }
+
+/* 링크 */
+a{ color:var(--link); text-decoration:none; }
+a:hover{ color:var(--link-hover); text-decoration:underline; text-underline-offset:2px; }
+
+/* 인라인 토글 링크 */
+.toggle-link{ color:var(--link); transition:color .2s ease; }
+.toggle-link:hover{ color:var(--link-hover); }
+
+/* 접힘/펼침 박스 */
+.hidden-content{
+  background-color:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--fg);
+}
+.hidden-content.show{ padding:12px; }
+
+/* 이미지 대비(얇은 매트) */
+.image-gallery img{
+  border-radius:6px;
+  background:var(--thumb);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 0 0 1px rgba(0,0,0,.40);
+}
+
+/* 갤러리 래퍼 */
+.image-gallery{} /* 그리드 규칙은 기본 CSS 사용 */
+
+/* 로드 실패 기본 처리 */
+.hidden-content img{ background:var(--thumb); }
+.hidden-content img[src="default.jpg"]{ opacity:.6; filter:grayscale(50%); }
+
+/* 선택/푸터 */
+#project-select{ background-color:var(--paper); color:var(--fg); border:1px solid var(--line); }
+.footer{ color:var(--muted); }
+
+/* 팝업 모드 래퍼 */
+.popup-layout .image-gallery{ max-width:1200px; margin:0 auto; }
+
+/* 보조 텍스트 */
+.muted, .desc{ color:var(--muted); }
+
+/* 반응형 카드 간격 */
+.grid{ display:grid; gap:14px; }
+@media (min-width:1024px){ .grid{ grid-template-columns:repeat(auto-fill,minmax(320px,1fr)) } }
+@media (min-width:1440px){ .grid{ grid-template-columns:repeat(auto-fill,minmax(360px,1fr)) } }
+
+/* 썸네일 */
+.thumb{ aspect-ratio:4/3; width:100%; object-fit:cover; display:block; background:#0a0a0b; }
+
+/* 모달 이미지 크게 */
+.modal img{ max-width:96vw; max-height:86vh; object-fit:contain }
+
+/* ----- 지도 모달 / 런처 ----- */
+.btn-mapline{
+  padding:8px 12px; border-radius:10px;
+  background:var(--paper); color:var(--fg);
+  border:1px solid var(--line); cursor:pointer;
+}
+.btn-mapline:hover{ outline:2px solid var(--accent) }
+
+.map-modal[hidden]{ display:none }
+.map-modal{ position:fixed; inset:0; z-index:1000; display:grid; grid-template-rows:1fr; place-items:center; }
+.map-modal__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.65); backdrop-filter:blur(2px); }
+.map-modal__panel{
+  position:relative; width:min(96vw,1280px); height:min(80vh,800px);
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+#mapModalInner{ width:100%; height:100% }
+.map-modal__close{
+  position:absolute; top:10px; right:10px; width:36px; height:36px;
+  border:1px solid var(--line); border-radius:10px;
+  background:#00000055; color:#fff; cursor:pointer;
+}
+
+/* 버튼(라인 스타일) */
+.btn-line{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.55rem .8rem; border:1px solid var(--line,#232327);
+  border-radius:10px; background:var(--paper,#121215); color:var(--fg,#e7e7ea);
+  cursor:pointer; text-decoration:none;
+}
+.btn-line.small{ padding:.45rem .7rem; font-size:.95rem; }
+
+/* details/summary 토글 */
+.more-gallery{ margin-top:12px; }
+.more-gallery > summary{ list-style:none; cursor:pointer; }
+.more-gallery > summary::-webkit-details-marker{ display:none; }
+
+/* 지도 모달 */
+.map-modal[hidden]{ display:none; }
+.map-modal{ position:fixed; inset:0; z-index:1000; }
+.map-modal__backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.6); backdrop-filter: blur(2px);
+}
+.map-modal__panel{
+  position:absolute; inset:5vh 5vw; background:#111; border:1px solid #333; border-radius:12px;
+  display:grid; grid-template-rows:auto 1fr;
+}
+.map-modal__close{
+  justify-self:end; margin:8px; padding:6px 10px; border:1px solid #333; border-radius:8px;
+  background:#161616; color:#eee; cursor:pointer;
+}
+#mapModalInner{ min-height:60vh; }

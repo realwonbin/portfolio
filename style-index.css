@@ -1,0 +1,172 @@
+/* ========= Base ========= */
+:root{
+  --bg:#f7f6f4;
+  --ink:#1c2a39;
+  --text:#2b2b2b;
+  --muted:#6c7378;
+  --rule:#e5e1da;
+  --container: 800px;
+  --radius:12px;
+  --gap:20px;
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system, "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size:16px; line-height:1.7;
+  text-align:left;
+}
+
+.container{ max-width:var(--container); margin:0 auto; padding:24px; }
+h1,h2,h3{ line-height:1.25; text-wrap:balance; margin:0 0 16px; }
+h2{ font-size:2rem; text-align:center; margin-top:8px; }
+p{ margin:0 0 1rem; }
+
+.hr-rule{ border:0; border-top:1px solid var(--rule); margin:24px 0; }
+
+/* 스크린리더 전용 */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* ========= Tabs (underline style) ========= */
+.intro-nav{ display:flex; justify-content:center; margin:8px auto 24px; padding:0; }
+.intro-nav ul{ display:flex; flex-wrap:wrap; gap:18px; list-style:none; margin:0; padding:0; }
+.intro-tab{
+  position:relative; display:inline-block; padding:6px 0;
+  text-decoration:none; font-weight:600; color:var(--text);
+}
+.intro-tab::after{
+  content:""; position:absolute; left:50%; bottom:-6px; width:0; height:2px;
+  background:var(--ink); transition:width .2s ease, left .2s ease;
+}
+.intro-tab:hover::after{ width:60%; left:20%; }
+.intro-tab.active{ color:var(--ink); }
+.intro-tab.active::after{ width:100%; left:0; }
+
+/* ========= Sections ========= */
+.intro-section{ display:none; }
+.intro-section.active{ display:block; }
+.intro-section > p:first-of-type{
+  margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--rule);
+}
+
+/* ========= Image + Text blocks ========= */
+.image-text-block{
+  display:flex; flex-wrap:wrap; align-items:flex-start;
+  gap:var(--gap); margin-bottom:32px;
+}
+.image-text-block img{
+  width:200px; height:auto; display:block; border-radius:var(--radius);
+}
+.text-description{ flex:1; min-width:260px; text-align:left; }
+.text-description h3{
+  word-break: keep-all;     /* 글자 단위가 아니라 어절 단위로 */
+  line-break: loose;        /* 문장부호 주변 줄바꿈 개선 */
+  text-wrap: balance;       /* 2줄 길이 균형 (크롬/엣지/사파리 최신) */
+  letter-spacing: -0.005em; /* 미세 커닝 */
+}
+.text-description p{ margin:0 0 12px; }
+
+/* ========= Gallery ========= */
+.image-gallery{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  max-width:1200px; margin:0 auto;
+}
+.image-gallery img{ width:100%; display:block; border-radius:var(--radius); }
+
+/* ========= Category select row ========= */
+/* 라벨+셀렉트 레이아웃 */
+.selector-row{
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;             /* 항목 1개씩 세로 */
+  max-width: var(--container-wide);       /* 필요하면 1024px로 ↑ */
+  margin: 32px auto 8px;
+  padding: 0 24px;
+  position: relative;
+  margin-top: 56px;        /* 본문과 거리 */
+  padding-top: 12px;
+}
+
+.select-field{ 
+  display: grid;
+  grid-template-columns: clamp(120px, 16%, 220px) 1fr;  /* 라벨 좁게, 셀렉트 넓게 */
+  align-items: center;
+  column-gap: 16px;
+}
+
+/* 보이는 소제목(라벨) */
+.select-label{
+  margin: 0;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #6c7378;
+}
+.selector-row::before{
+  content:"";
+  display:block;
+  height:1px;
+  width:100%;
+  background: linear-gradient(90deg, transparent 0, var(--rule) 14%, var(--rule) 86%, transparent 100%);
+  margin: 0 0 18px;
+  border-radius: 1px;
+}
+
+/* 셀렉트 자체 */
+.selector-row select{
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #fff;        /* 흰 배경으로 고정 */
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+  color: var(--text);
+  line-height: 1.35;
+  appearance: none;
+}
+
+/* ========== 푸터 외부 링크 ========== */
+.external-menu{
+  max-width: var(--container);
+  margin: 28px auto 48px;
+  padding: 0 24px;
+  text-align: left;
+}
+.external-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.external-menu a,
+.external-menu .menu-link{               /* 클래스가 빠져도 적용되도록 a에도 적용 */
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  text-decoration: none;
+  color: var(--text);
+  background: #fff;
+}
+.external-menu a:hover{ border-color: var(--ink); }
+
+@media (max-width: 640px){
+  .select-field{ grid-template-columns: 1fr; row-gap: 6px; }
+  .selector-row{ margin-top: 40px; }
+}
+
+/* 기본: 브레이크 숨김 → 한 줄 */
+.br-desktop{ display:none; }
+/* 넓은 화면에서만 강제 줄바꿈 */
+@media (min-width: 900px){
+  .br-desktop{ display: inline; }
+}
+/* 한국어 제목 줄바꿈/가독성 보정(권장) */
+.title{ word-break: keep-all; line-break: loose; text-wrap: balance; }
