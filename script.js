@@ -31,7 +31,7 @@
 
     function syncFromHash(){
   const h = location.hash.slice(1);
-  const id = (h && sectionIds.has(h)) ? h : 'intro0';   // 기본을 intro1로
+  const id = (h && sectionIds.has(h)) ? h : 'intro4';   // 기본을 intro1로
   setActive(id);
 }
 
