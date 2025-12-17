@@ -71,7 +71,7 @@ a:hover{ color:var(--link-hover); text-decoration:underline; text-underline-offs
 @media (min-width:1440px){ .grid{ grid-template-columns:repeat(auto-fill,minmax(360px,1fr)) } }
 
 /* 썸네일 */
-.thumb{ aspect-ratio:4/3; width:100%; object-fit:cover; display:block; background:#0a0a0b; }
+.thumb{ aspect-ratio:auto; width:100%; object-fit:contain; display:block; background:#0a0a0b; }
 
 /* 모달 이미지 크게 */
 .modal img{ max-width:96vw; max-height:86vh; object-fit:contain }
