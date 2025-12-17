@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.png" type="image/png">
   <title>이영</title>
-  <script>
+  <!--<script>
 (function () {
   const qs = new URLSearchParams(location.search);
   const forced = qs.get('lang');
@@ -23,7 +23,7 @@
     location.replace('/en/');
   }
 })();
-</script>
+</script>-->
 
 
 
@@ -38,21 +38,23 @@
 </script>
   <link rel="stylesheet" href="style-index.css">
   <link rel="stylesheet" href="style-mobile.css" media="only screen and (max-width: 480px)">
-  <script>
+  <!--<script>
     const lang = navigator.language || navigator.userLanguage;
     
     // 한국어가 아닌 경우
     if (!lang.startsWith('ko')) {
       window.location.href = "/en/index.html";  // 영어 페이지 경로
     }
-  </script>
+  </script>-->
 </head>
 <body>
   <header>
   <nav class="intro-nav" role="tablist" aria-label="작업 서문">
     <ul>
-      <li><a id="tab-intro0" href="#intro0" class="intro-tab active"
-             role="tab" aria-controls="intro0" aria-selected="true" tabindex="0">시작</a></li>
+      <li><a id="tab-intro3" href="#intro4" class="intro-tab active"
+             role="tab" aria-controls="intro4" aria-selected="true" tabindex="0">가까운 것들은 가장 멀리 있다</a></li>
+      <li><a id="tab-intro0" href="#intro0" class="intro-tab"
+             role="tab" aria-controls="intro0" aria-selected="false" tabindex="-1">시작</a></li>
       <li><a id="tab-intro1" href="#intro1" class="intro-tab"
              role="tab" aria-controls="intro1" aria-selected="false" tabindex="-1">엉킨 실타래,달항아리</a></li>
       <li><a id="tab-intro2" href="#intro2" class="intro-tab"
@@ -64,7 +66,7 @@
 </header>
   <main class="container">
   <!-- 섹션: role="tabpanel" / aria-labelledby 로 탭과 1:1 매핑 -->
-  <section id="intro0" class="intro-section active" role="tabpanel" aria-labelledby="tab-intro0">
+  <section id="intro0" class="intro-section" role="tabpanel" aria-labelledby="tab-intro0">
     <br><h2>이영</h2><br>
           <!--<div class="image-text-block">      
             다양한 삶은 공통된 구조를 통해 연결되어 있다. 나는 사진을 매개로 그 구조를 발견하고 기록한다. 삶의 흔적은 사회문화적 가치와 교차하며 인덱스로 남고,
@@ -232,6 +234,10 @@
    볼품 없는 내 삶이 조금이라도 투명하기를 바랐다. 진심을 생각할 겨를이 없었다. 나 여기 계속 있다. 누구든 슬프면 와도 좋다. 
    그게 전부였다.
   
+  </section>
+  <section id="intro0" class="intro-section" role="tabpanel" aria-labelledby="tab-intro0">
+    <br><h2>전시엽서</h2><br>
+          
   </section>
   <br>
   <div class="hidden-content"></div> <!-- ✅ 토글링크에 대응하는 콘텐츠 -->
