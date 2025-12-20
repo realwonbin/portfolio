@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>까르본까라멜로</title>
+  <link rel="stylesheet" href="portfolio/style-cont.css">
+  <link rel="stylesheet" href="portfolio/style-mobile.css" media="only screen and (max-width: 480px)">
+</head>
+<script>
+  if (new URLSearchParams(window.location.search).get('mode') === 'popup') {
+      document.body.classList.add('popup-layout');
+  }
+</script>
+<body>
+  <main class="container">
+    <h2>까르본 까라멜로 / 2024- </h2>
+    
+    <!-- ✅ 이미지 갤러리 -->
+    <div class="image-gallery">
+      <div class="image-block four">
+        <img src="images/carbon/img1.jpg" alt="프로젝트 1 이미지 1">
+        <img src="images/carbon/img2.jpg" alt="프로젝트 1 이미지 2">
+        <img src="images/carbon/img3.jpg" alt="프로젝트 1 이미지 3">
+        <img src="images/carbon/img4.jpg" alt="프로젝트 1 이미지 4">
+        <img src="images/carbon/img5.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img6.jpg" alt="프로젝트 1 이미지 6">
+        <img src="images/carbon/img7.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img8.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img9.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img10.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img11.jpg" alt="프로젝트 1 이미지 5">
+        <img src="images/carbon/img12.jpg" alt="프로젝트 1 이미지 5">
+        <!--<img src="/images/af/img13.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img14.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img15.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img16.jpg" alt="프로젝트 1 이미지 5"> 
+        <img src="/images/af/img17.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img18.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img19.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img20.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img21.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img22.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img23.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img24.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img25.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img26.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img27.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img28.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img29.jpg" alt="프로젝트 1 이미지 5">
+        <img src="/images/af/img30.jpg" alt="프로젝트 1 이미지 5">--></div>
+        
+      </div>   
+    <p></p>
+    <p>
+        진행 ...
+      <p></p>
+      <ul><h4>참여한 전시</h4> 
+        <li>없음</li>
+        
+      </ul>
+      <ul><h4>관련 작업</h4> 
+        <li><a href="contents/haj.html" target="_blank">2007 《대추와 꿀벌》</a></li>
+        <li><a href="contents/kod.html" target="_blank">2005-07 《문을 두드리다》</a></li>
+        <li><a href="contents/cambo.html" target="_blank">2007 《캄보디아에서 온 37세의 분반나씨》</a></li>
+        <li><a href="contents/oosy.html" target="_blank">2009 《보이지 않는 당신》</a></li>
+        <li><a href="contents/st.html" target="_blank">2009-15 《돌탑》</a></li>
+        
+        <!--<li><a href="#" target="_blank">2020-25 거미</a></li>-->
+        <!--<li><a href="/contents/af.html" target="_blank">2011-24 조화</a></li>
+        
+        <li><a href="#" target="_blank">2025- 헐렁한 점퍼</a></li>-->
+                      
+      </ul>
+    </p>
+
+    <a href="portfolio">🔙 돌아가기</a>
+     <!-- 클릭 시 아래에 바로 표시되는 콘텐츠 
+     <div id="dynamicContent"></div>
+
+     <p>
+       <a href="#" class="inline-link" onclick="loadContent('/contents/chungmuro.html')">2009 인민로</a>
+       <a href="#" class="inline-link" onclick="loadContent('/contents/chungmuro.html')">2025 까르본 까라멜로</a>
+     </p>
+     <div id="inlineContent"></div>
+ 
+   </main>
+  <script>
+    function loadContent(url) {
+        const container = document.createElement('div');
+        container.className = 'inline-content';
+    
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                container.innerHTML = html;
+                document.body.appendChild(container);
+                container.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                container.innerHTML = `<p style="color: red;">❌ 콘텐츠를 불러오는 데 실패했습니다.</p>`;
+                console.error('Error loading content:', error);
+            });
+    }
+    </script>-->
+ 
+</body>
+</html>
