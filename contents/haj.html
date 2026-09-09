@@ -6,7 +6,8 @@
   <title>대추와꿀벌</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../style-cont.css">
+  <link rel="stylesheet" href="../style-cont.css?v=23">
+  <script src="../assets/portfolio-sidebar.js?v=24" defer></script>
   <link rel="stylesheet" href="../style-mobile.css" media="only screen and (max-width: 480px)">
 </head>
 <script>
@@ -14,19 +15,32 @@
       document.body.classList.add('popup-layout');
   }
 </script>
-<body>
+<body class="legacy-sidebar-page">
   <main class="container">
     <h2>대추와 꿀벌 / 2005-</h2>
     
     <!-- ✅ 이미지 갤러리 -->
     <div class="image-gallery">
-        <div class="image-gallery three">
+      <div class="image-gallery one">
+          <a href="https://episodearth.synology.me/images-large/haj/img3.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
+                <img src="../images/haj/img3.jpg" alt="프로젝트 1 이미지 3">
+              </a>
+      </div>
+    <p></p>
+    <p>
+        근처 밀집한 빌라는 대부분 5층 이상이다. 다닥다닥 붙어서 벽 하나를 사이에 두고 있다. 
+        그리고 1층 주차장의 한 구석에 어김없이 식물이 있다. 식물은 주차장의 좁은 공간에서 건물 사이로 비치는 옅은 빛마저 제대로 받지 못하고 시들시들하다.
+         꽃을 피운 경우는 거의 보지 못했다. 그렇다고 말라 죽은 것도 없다. 대부분은 잎들이 주글주글하고 처진 느낌이고 
+         심한 것은 오그라들어 있다. 빛이 잘 들지 않는 곳에 사는 음지성 식물이 있다고 하는데 잎이 넓적한 걸 보니 그런것 같지는 않다.<br>
+도시의 구조물 사이에 푸른 식물이 있다. 이들이 가져오는 효과가 콘크리트 벽의 냉기를 상쇄할 만큼의 온기를 가지고 있을까. 가끔은 마치, 대추에 머리를 처박고 죽은 꿀벌처럼 생사의 경계에서 질식해 있는 듯 보이기도 한다.
+
+    </div>
+    <div class="image-gallery">
+        <div class="image-gallery justified">
             <!--<img src="/images/haj/img1.jpg" alt="프로젝트 1 이미지 1">
             <img src="/images/haj/img2.jpg" alt="프로젝트 1 이미지 2">-->
 
-              <a href="https://episodearth.synology.me/images-large/haj/img3.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
-                <img src="../images/haj/img3.jpg" alt="프로젝트 1 이미지 3">
-              </a>
+              
               <a href="https://episodearth.synology.me/images-large/haj/img4.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
                 <img src="../images/haj/img4.jpg" alt="프로젝트 1 이미지 4">
               </a>
@@ -42,9 +56,15 @@
               <a href="https://episodearth.synology.me/images-large/haj/img8.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
                 <img src="../images/haj/img8.jpg" alt="프로젝트 1 이미지 8">
               </a>
-            </div>
-            
-            <div class="image-gallery five">
+              <a href="https://episodearth.synology.me/images-large/haj/img15.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
+                <img src="../images/haj/img15.jpg" alt="프로젝트 1 이미지 15">
+              </a>
+              <a href="https://episodearth.synology.me/images-large/haj/img16.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
+                <img src="../images/haj/img16.jpg" alt="프로젝트 1 이미지 16">
+              </a>
+              <a href="https://episodearth.synology.me/images-large/haj/img17.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
+                <img src="../images/haj/img17.jpg" alt="프로젝트 1 이미지 17">
+              </a>
               <a href="https://episodearth.synology.me/images-large/haj/img10.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
                 <img src="../images/haj/img10.jpg" alt="프로젝트 1 이미지 10">
               </a>
@@ -62,18 +82,7 @@
               </a>
             </div>
             
-            <div class="image-gallery three">
-              <a href="https://episodearth.synology.me/images-large/haj/img15.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
-                <img src="../images/haj/img15.jpg" alt="프로젝트 1 이미지 15">
-              </a>
-              <a href="https://episodearth.synology.me/images-large/haj/img16.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
-                <img src="../images/haj/img16.jpg" alt="프로젝트 1 이미지 16">
-              </a>
-              <a href="https://episodearth.synology.me/images-large/haj/img17.jpg" data-lightbox="gallery" data-title="대추와 꿀벌">
-                <img src="../images/haj/img17.jpg" alt="프로젝트 1 이미지 17">
-              </a>
-            </div>
-            
+                       
             <!--<img src="/images/af/img18.jpg" alt="프로젝트 1 이미지 5">
             <img src="/images/af/img19.jpg" alt="프로젝트 1 이미지 5">
             <img src="/images/af/img20.jpg" alt="프로젝트 1 이미지 5">
@@ -90,14 +99,7 @@
     </div>
         
       </div>   
-    <p></p>
-    <p>
-        근처 밀집한 빌라는 대부분 5층 이상이다. 다닥다닥 붙어서 벽 하나를 사이에 두고 있다. 
-        그리고 1층 주차장의 한 구석에 어김없이 식물이 있다. 식물은 주차장의 좁은 공간에서 건물 사이로 비치는 옅은 빛마저 제대로 받지 못하고 시들시들하다.
-         꽃을 피운 경우는 거의 보지 못했다. 그렇다고 말라 죽은 것도 없다. 대부분은 잎들이 주글주글하고 처진 느낌이고 
-         심한 것은 오그라들어 있다. 빛이 잘 들지 않는 곳에 사는 음지성 식물이 있다고 하는데 잎이 넓적한 걸 보니 그런것 같지는 않다.<br>
-도시의 구조물 사이에 푸른 식물이 있다. 이들이 가져오는 효과가 콘크리트 벽의 냉기를 상쇄할 만큼의 온기를 가지고 있을까. 가끔은 마치, 대추에 머리를 처박고 죽은 꿀벌처럼 생사의 경계에서 질식해 있는 듯 보이기도 한다.
-
+    
       <p></p>
       <ul><h4>참조</h4> 
         <li>우리들의 시간(p.166 대추와 꿀벌), 박경리, 나남출판사</li>

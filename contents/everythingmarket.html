@@ -6,7 +6,8 @@
   <title>만물시장</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../style-cont.css">
+  <link rel="stylesheet" href="../style-cont.css?v=23">
+  <script src="../assets/portfolio-sidebar.js?v=24" defer></script>
   <link rel="stylesheet" href="../style-mobile.css" media="only screen and (max-width: 480px)">
 </head>
 <script>
@@ -14,13 +15,13 @@
       document.body.classList.add('popup-layout');
   }
 </script>
-<body>
+<body class="legacy-sidebar-page">
   <main class="container">
     <h2>만물시장 / 2007</h2>
     <!-- ✅ 이미지 갤러리 -->
      <div class="image-gallery">
       <div class="image-gallery one">
-          <a href="https://episodearth.synology.me/images-large/everythingmarket/img1.jpg" data-lightbox="gallery" data-title="만물시장 EverythingMarket, 40x50cm, pigment print, 2007"><img src="https://episodearth.synology.me/images-large/everythingmarket/img1.jpg"></a>
+          <a href="https://episodearth.synology.me/images-large/everythingmarket/img1.jpg" data-lightbox="gallery" data-title="만물시장 EverythingMarket, 40x50cm, pigment print, 2007"><img src="../images/everythingmarket/img1.jpg"></a>
       </div>
        <h3>이영이 수집한 만물시장의 옛 간판들</h3>
       <p style="text-align: right;">박영택 (경기대교수, 미술평론가)</p>
@@ -72,8 +73,8 @@
 <a href="https://episodearth.synology.me/images-large/everythingmarket/img47.jpg" data-lightbox="gallery" data-title="만물시장 EverythingMarket, 40x50cm, pigment print, 2007"><img src="../images/everythingmarket/img47.jpg"></a>
 <a href="https://episodearth.synology.me/images-large/everythingmarket/img24.jpg" data-lightbox="gallery" data-title="만물시장 EverythingMarket, 40x50cm, pigment print, 2007"><img src="../images/everythingmarket/img24.jpg"></a>
 <a href="https://episodearth.synology.me/images-large/everythingmarket/img25.jpg" data-lightbox="gallery" data-title="만물시장 EverythingMarket, 40x50cm, pigment print, 2007"><img src="../images/everythingmarket/img25.jpg"></a>
-
 </div>
+
 <h3>작업노트</h3>
       상점의 주인이 달라지면 간판을 바꾸기 마련이다. 오랜 시간 한 곳에서 장사를 한 것일까? 통념 외로 간판마저 중고일까?
       황학동 중고재래시장의 이미지는 오래된 듯 보이는 간판이 한몫 한다. 검정, 빨강, 노랑을 사용한 순 한글 뿐인
@@ -186,6 +187,7 @@
      <div id="inlineContent"></div>-->
  
    </main>
+</div>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <script>
       lightbox.option({
