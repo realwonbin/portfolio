@@ -176,7 +176,7 @@
   aside.innerHTML = `
     <div class="legacy-sidebar-head">
       <a class="legacy-brand" href="${rootPrefix}index.html?v=9">이영 <span>Lee Young</span></a>
-      <nav aria-label="사이트 메뉴"><a href="${rootPrefix}about.html?v=9">시작</a><a href="${rootPrefix}texts.html?v=9">생각</a><a href="${contentPrefix}resume.html?v=9">이력</a><a href="https://blog.younglee.co.kr" target="_blank" rel="noopener noreferrer">블로그</a><a href="https://www.instagram.com/iam2020/" target="_blank" rel="noopener noreferrer">인스타그램</a></nav>
+      <nav aria-label="사이트 메뉴"><a href="${rootPrefix}about.html?v=9">시작</a><a href="${rootPrefix}texts.html?v=9">생각</a><a href="${contentPrefix}resume.html?v=9">이력</a><a href="https://www.instagram.com/iam2020/" target="_blank" rel="noopener noreferrer">인스타그램</a></nav>
     </div>
     <button class="legacy-list-toggle" type="button" aria-expanded="false" aria-controls="legacy-work-list">전체 작업 <span>20</span></button>
     <nav id="legacy-work-list" class="legacy-work-list">${sections}${textSection}${exhibitionSection}</nav>`;
