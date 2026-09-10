@@ -73,21 +73,21 @@
 
   const projects = [
     { title: '표면의 말 : 황학동 만물시장에서 시작한 간판기록의 연속과 확장', items: [
-      ['2007', '만물시장', 'everythingmarket.html'], ['2008', '인민로', 'renminro.html'],
-      ['2009–10', '평화와 통일', 'pnr0910.html'], ['2018', '호안끼엠', 'hoankiem.html'],
-      ['2021', '바이센지', 'weissensee.html'], ['2022', '사랑곳', 'sarangkot.html'],
-      ['2023', '비늘', 'scale.html'], ['2024', '알고도날레스', 'algodonales.html'],
-      ['2025', '담 Threshold', 'threshold.html']
+      ['2025', '담 Threshold', 'threshold.html'], ['2024', '알고도날레스', 'algodonales.html'],
+      ['2023', '비늘', 'scale.html'], ['2022', '사랑곳', 'sarangkot.html'],
+      ['2021', '바이센지', 'weissensee.html'], ['2018', '호안끼엠', 'hoankiem.html'],
+      ['2009–10', '평화와 통일', 'pnr0910.html'], ['2008', '인민로', 'renminro.html'],
+      ['2007', '만물시장', 'everythingmarket.html']
     ]},
     { title: '환원되지 않는 것들 : 비선형적 시간으로부터 생태윤리적 감각으로', items: [
-      ['2005', '대추와 꿀벌', 'haj.html'], ['2005–07', '문을 두드리다', 'kod.html'],
-      ['2007', '캄보디아에서 온 37세의 분반나씨', 'cambo.html'], ['2009', '보이지 않는 당신', 'oosy.html'],
-      ['2009–15', '돌탑', 'st.html'], ['2011–', '조화', 'af.html'],
-      ['2023–26', '까만 사탕', 'carbon.html']
+      ['2023–26', '까만 사탕', 'carbon.html'], ['2011–', '조화', 'af.html'],
+      ['2009–15', '돌탑', 'st.html'], ['2009', '보이지 않는 당신', 'oosy.html'],
+      ['2007', '캄보디아에서 온 37세의 분반나씨', 'cambo.html'],
+      ['2005–07', '문을 두드리다', 'kod.html'], ['2005', '대추와 꿀벌', 'haj.html']
     ]},
     { title: '진행 중인 구조 : 사건의 기록과 유형의 발견', items: [
-      ['2009', '충무로', 'chungmuro.html'], ['2017–18', '반딧불이', 'firefly.html'],
-      ['2018, 25', '시계탑', 'clocktower.html'], ['2026', '지번', 'lot.html']
+      ['2026', '지번', 'lot.html'], ['2018, 25', '시계탑', 'clocktower.html'],
+      ['2017–18', '반딧불이', 'firefly.html'], ['2009', '충무로', 'chungmuro.html']
     ]}
   ];
 
